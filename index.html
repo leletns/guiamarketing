@@ -7,7 +7,7 @@
 <title>Blue · Kit Interno de IA · Rebeca</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Syne:wght@600;700;800&display=swap');
-:root{--ink:#04080f;--deep:#070e1e;--surface:#0b1326;--raised:#0f1a30;--border:rgba(255,255,255,0.07);--border-hi:rgba(82,145,255,0.35);--blue:#3a7fff;--blue-dim:rgba(58,127,255,0.12);--blue-glow:rgba(58,127,255,0.22);--teal:#24d8b8;--teal-dim:rgba(36,216,184,0.1);--amber:#f0b429;--amber-dim:rgba(240,180,41,0.1);--rose:#ff6b8a;--rose-dim:rgba(255,107,138,0.1);--white:#eef2ff;--muted:#7b90b8;--subtle:rgba(123,144,184,0.45);--radius-sm:10px;--radius:16px;--ease:cubic-bezier(0.16,1,0.3,1);}
+:root{--ink:#04080f;--deep:#070e1e;--surface:#0b1326;--raised:#0f1a30;--border:rgba(255,255,255,0.07);--border-hi:rgba(82,145,255,0.35);--blue:#3a7fff;--blue-dim:rgba(58,127,255,0.12);--teal:#24d8b8;--teal-dim:rgba(36,216,184,0.1);--amber:#f0b429;--amber-dim:rgba(240,180,41,0.1);--rose:#ff6b8a;--rose-dim:rgba(255,107,138,0.1);--pink:#ff2d55;--pink-dim:rgba(255,45,85,0.1);--purple:#a855f7;--purple-dim:rgba(168,85,247,0.1);--white:#eef2ff;--muted:#7b90b8;--subtle:rgba(123,144,184,0.45);--radius-sm:10px;--radius:16px;--ease:cubic-bezier(0.16,1,0.3,1);}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;scroll-padding-top:80px;}
 body{background:var(--ink);color:var(--white);font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow-x:hidden;cursor:none;line-height:1.6;}
@@ -19,7 +19,7 @@ body.h #curR{width:48px;height:48px;border-color:var(--amber);}
 #cv{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.65;}
 #ld{position:fixed;inset:0;z-index:2000;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .7s var(--ease),visibility .7s;}
 #ld.out{opacity:0;visibility:hidden;}
-.ld-mark{font-family:'Syne',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.02em;color:var(--white);margin-bottom:6px;}
+.ld-mark{font-family:'Syne',-apple-system,sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.02em;color:var(--white);margin-bottom:6px;}
 .ld-mark em{color:var(--blue);font-style:normal;}
 .ld-sub{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:40px;}
 .ld-track{width:180px;height:1.5px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;}
@@ -39,10 +39,13 @@ section{padding:clamp(60px,8vw,110px) 0;}
 .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}.d5{transition-delay:.35s}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',-apple-system,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
 .eyebrow::before{content:'';display:block;width:16px;height:1.5px;background:var(--blue);}
-h1{font-family:'Syne',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:800;font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:1.08;letter-spacing:-.03em;}
-h2{font-family:'Syne',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,3rem);line-height:1.12;letter-spacing:-.025em;}
+.eyebrow.tt{color:var(--pink);}
+.eyebrow.tt::before{background:var(--pink);}
+h1{font-family:'Syne',-apple-system,sans-serif;font-weight:800;font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:1.08;letter-spacing:-.03em;}
+h2{font-family:'Syne',-apple-system,sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,3rem);line-height:1.12;letter-spacing:-.025em;}
 h3{font-family:'Syne',-apple-system,sans-serif;font-weight:700;font-size:1.05rem;line-height:1.3;}
 .g{background:linear-gradient(135deg,var(--white) 20%,var(--blue) 65%,var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.g-tt{background:linear-gradient(135deg,var(--white) 10%,var(--pink) 55%,var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
 #hero{min-height:100svh;display:flex;align-items:center;padding-top:80px;position:relative;}
 .hero-wrap{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;}
@@ -60,7 +63,9 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
 .btn-prim{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:13px 26px;border-radius:99px;font-family:'Syne',-apple-system,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .3s;box-shadow:0 0 28px rgba(58,127,255,.4);}
 .btn-prim:hover{box-shadow:0 0 44px rgba(58,127,255,.6);transform:translateY(-2px);}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--muted);padding:13px 26px;border-radius:99px;font-family:'Syne',-apple-system,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border);transition:all .3s;}
-.btn-ghost:hover{color:var(--white);border-color:var(--border-hi);}
+.btn-ghost:hover{color:var(--white);border-color:rgba(82,145,255,.35);}
+.btn-tt{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;padding:13px 26px;border-radius:99px;font-family:'Syne',-apple-system,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .3s;box-shadow:0 0 28px rgba(255,45,85,.35);}
+.btn-tt:hover{box-shadow:0 0 44px rgba(255,45,85,.6);transform:translateY(-2px);}
 .filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px;}
 .fb{padding:7px 18px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Syne',-apple-system,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:all .25s;}
 .fb:hover{color:var(--white);border-color:var(--blue);background:var(--blue-dim);}
@@ -68,7 +73,7 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(294px,1fr));gap:16px;}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;position:relative;overflow:hidden;transition:border-color .3s,transform .35s var(--ease),box-shadow .35s;transform-style:preserve-3d;will-change:transform;}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(58,127,255,.25),transparent);opacity:0;transition:opacity .3s;}
-.card:hover{border-color:var(--border-hi);box-shadow:0 16px 48px rgba(10,20,50,.6),0 0 0 1px rgba(58,127,255,.08);transform:translateY(-5px);}
+.card:hover{border-color:rgba(82,145,255,.35);box-shadow:0 16px 48px rgba(10,20,50,.6);transform:translateY(-5px);}
 .card:hover::before{opacity:1;}
 .card.hidden{display:none;}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;}
@@ -92,7 +97,7 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
 .flow-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px;}
 @media(max-width:680px){.flow-grid{grid-template-columns:1fr;}}
 .fc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .3s;}
-.fc.open{border-color:var(--border-hi);}
+.fc.open{border-color:rgba(82,145,255,.35);}
 .fh{display:flex;align-items:center;gap:14px;padding:20px 22px;cursor:none;user-select:none;}
 .fn{font-family:'Syne',-apple-system,sans-serif;font-size:.6rem;font-weight:800;color:var(--blue);letter-spacing:.08em;opacity:.55;width:20px;flex-shrink:0;}
 .fl{font-family:'Syne',-apple-system,sans-serif;font-size:.88rem;font-weight:700;color:var(--white);flex:1;line-height:1.3;}
@@ -115,7 +120,7 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
 .pc.ok{background:rgba(36,216,184,.12);border-color:rgba(36,216,184,.25);color:var(--teal);}
 .qr-list{display:flex;flex-direction:column;gap:10px;margin-top:32px;}
 .qr{display:grid;grid-template-columns:160px 1fr auto;align-items:center;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .3s,transform .3s var(--ease);}
-.qr:hover{border-color:var(--border-hi);transform:translateX(4px);}
+.qr:hover{border-color:rgba(82,145,255,.35);transform:translateX(4px);}
 .qr-t{padding:15px 18px;border-right:1px solid var(--border);font-family:'Syne',-apple-system,sans-serif;font-size:.78rem;font-weight:700;color:var(--white);background:var(--raised);}
 .qr-d{padding:13px 18px;font-size:.78rem;color:var(--muted);line-height:1.5;}
 .qr-l{padding:13px 18px;border-left:1px solid var(--border);font-family:'Syne',-apple-system,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;white-space:nowrap;transition:background .25s;cursor:none;}
@@ -124,7 +129,7 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
 .cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px;}
 @media(max-width:640px){.cl-grid{grid-template-columns:1fr;}}
 .ci{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;cursor:none;transition:all .25s;user-select:none;}
-.ci:hover{border-color:var(--border-hi);}
+.ci:hover{border-color:rgba(82,145,255,.35);}
 .ci.done{border-color:rgba(36,216,184,.28);background:rgba(36,216,184,.04);}
 .ci-box{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;color:transparent;}
 .ci.done .ci-box{border-color:var(--teal);background:rgba(36,216,184,.18);color:var(--teal);}
@@ -137,23 +142,84 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
 .prog-track{height:4px;background:rgba(255,255,255,.05);border-radius:99px;overflow:hidden;}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:99px;transition:width .5s var(--ease);width:0%;}
 .div{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:1080px;margin:0 auto;}
+
+/* ── TIKTOK SECTION ── */
+#tiktok{position:relative;overflow:hidden;}
+.tt-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(255,45,85,.06),transparent 60%),radial-gradient(ellipse at 70% 20%,rgba(168,85,247,.05),transparent 55%);pointer-events:none;}
+
+/* Score card */
+.tt-score-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:32px 0;}
+.tt-score{background:var(–surface);border:1px solid var(–border);border-radius:var(–radius);padding:20px 22px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s var(–ease);}
+.tt-score:hover{border-color:rgba(255,45,85,.3);transform:translateY(-4px);}
+.tt-score::after{content:’’;position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,45,85,.04),transparent);pointer-events:none;}
+.tt-score-val{font-family:‘Syne’,-apple-system,sans-serif;font-size:2rem;font-weight:800;line-height:1;margin-bottom:6px;}
+.tt-score-lbl{font-size:.72rem;color:var(–muted);line-height:1.4;}
+.v-pink{color:var(–pink);}
+.v-purple{color:var(–purple);}
+.v-teal{color:var(–teal);}
+.v-amber{color:var(–amber);}
+
+/* Trend Radar */
+.tt-radar{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
+@media(max-width:680px){.tt-radar{grid-template-columns:1fr;}}
+.tr-card{background:var(–surface);border:1px solid var(–border);border-radius:var(–radius);padding:20px 22px;transition:border-color .3s,transform .3s var(–ease);}
+.tr-card:hover{border-color:rgba(255,45,85,.3);transform:translateY(-3px);}
+.tr-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.tr-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.tr-icon.pink{background:var(–pink-dim);}
+.tr-icon.purple{background:var(–purple-dim);}
+.tr-icon.teal{background:var(–teal-dim);}
+.tr-icon.amber{background:var(–amber-dim);}
+.tr-title{font-family:‘Syne’,-apple-system,sans-serif;font-size:.88rem;font-weight:700;color:var(–white);}
+.tr-sub{font-size:.7rem;color:var(–muted);}
+.tr-body{font-size:.82rem;color:var(–muted);line-height:1.7;}
+.tr-body strong{color:var(–white);}
+.tr-body em{color:var(–pink);font-style:normal;}
+.tr-links{display:flex;flex-direction:column;gap:6px;margin-top:12px;}
+.tr-link{display:flex;align-items:center;justify-content:space-between;background:rgba(255,45,85,.06);border:1px solid rgba(255,45,85,.15);border-radius:8px;padding:9px 13px;text-decoration:none;transition:all .25s;cursor:none;}
+.tr-link:hover{background:rgba(255,45,85,.12);border-color:rgba(255,45,85,.3);}
+.tr-link-l{font-family:‘Syne’,-apple-system,sans-serif;font-size:.65rem;font-weight:700;color:var(–white);}
+.tr-link-r{font-size:.6rem;color:var(–pink);}
+
+/* Checklist TikTok */
+.tt-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px;}
+@media(max-width:640px){.tt-check-grid{grid-template-columns:1fr;}}
+
+/* Tabela de specs */
+.spec-table{width:100%;border-collapse:collapse;margin-top:28px;}
+.spec-table th{padding:11px 16px;text-align:left;font-family:‘Syne’,-apple-system,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(–muted);border-bottom:1px solid var(–border);background:var(–raised);}
+.spec-table td{padding:13px 16px;font-size:.82rem;color:var(–muted);border-bottom:1px solid rgba(255,255,255,.04);}
+.spec-table td:first-child{font-family:‘Syne’,-apple-system,sans-serif;font-size:.78rem;font-weight:700;color:var(–white);}
+.spec-table td em{color:var(–teal);font-style:normal;}
+.spec-table td span{color:var(–pink);}
+.spec-table tr:hover td{background:rgba(255,45,85,.03);}
+.spec-table{border:1px solid var(–border);border-radius:var(–radius);overflow:hidden;}
+
+/* Alert box */
+.alert{display:flex;gap:14px;background:rgba(255,45,85,.06);border:1px solid rgba(255,45,85,.2);border-radius:12px;padding:18px 20px;margin-top:20px;}
+.alert-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.alert-body{font-size:.84rem;color:var(–muted);line-height:1.7;}
+.alert-body strong{color:var(–white);}
+.alert.green{background:rgba(36,216,184,.06);border-color:rgba(36,216,184,.2);}
+.alert.green .alert-body strong{color:var(–teal);}
+
+/* FOOTER */
 #footer{text-align:center;padding:clamp(80px,10vw,140px) 0;position:relative;}
 .footer-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse at bottom,rgba(58,127,255,.16),transparent 70%);pointer-events:none;}
 .footer-in{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 24px;}
-.footer-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue-dim);border:1px solid rgba(58,127,255,.22);border-radius:99px;padding:8px 20px;margin-bottom:28px;font-family:'Syne',-apple-system,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);}
-.footer-sig{margin-top:52px;padding-top:28px;border-top:1px solid var(--border);font-family:'Syne',-apple-system,sans-serif;font-size:1rem;font-weight:700;color:var(--muted);letter-spacing:.05em;}
-.footer-sig span{color:var(--blue);}
-#toast{position:fixed;bottom:28px;right:28px;z-index:900;background:rgba(36,216,184,.12);border:1px solid rgba(36,216,184,.3);border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:8px;font-family:'Syne',-apple-system,sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);transform:translateY(80px);opacity:0;transition:all .4s var(--ease);}
+.footer-tag{display:inline-flex;align-items:center;gap:8px;background:var(–blue-dim);border:1px solid rgba(58,127,255,.22);border-radius:99px;padding:8px 20px;margin-bottom:28px;font-family:‘Syne’,-apple-system,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(–blue);}
+.footer-sig{margin-top:52px;padding-top:28px;border-top:1px solid var(–border);font-family:‘Syne’,-apple-system,sans-serif;font-size:1rem;font-weight:700;color:var(–muted);letter-spacing:.05em;}
+.footer-sig span{color:var(–blue);}
+#toast{position:fixed;bottom:28px;right:28px;z-index:900;background:rgba(36,216,184,.12);border:1px solid rgba(36,216,184,.3);border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:8px;font-family:‘Syne’,-apple-system,sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–teal);transform:translateY(80px);opacity:0;transition:all .4s var(–ease);}
 #toast.show{transform:translateY(0);opacity:1;}
 @media(max-width:768px){#nav{display:none;}}
 </style>
+
 </head>
 <body>
-<div id="cur"></div>
-<div id="curR"></div>
-<div id="sp"></div>
+<div id="cur"></div><div id="curR"></div><div id="sp"></div>
 <canvas id="cv"></canvas>
-<div id="toast"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Prompt copiado</div>
+<div id="toast"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Copiado!</div>
 
 <div id="ld">
   <div class="ld-mark">BLUE<em>.</em></div>
@@ -166,11 +232,14 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
   <a href="#hero" class="on">Início</a>
   <a href="#arsenal">Arsenal</a>
   <a href="#fluxos">Fluxos</a>
+  <a href="#tiktok">TikTok</a>
   <a href="#ref">Referência</a>
   <a href="#checklist">Checklist</a>
 </nav>
 
 <main>
+
+<!-- HERO -->
 
 <section id="hero">
   <div class="wrap">
@@ -178,25 +247,26 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
       <div>
         <div class="hero-pill rv"><span class="dot"></span>Kit Interno · Blue Clínica</div>
         <h1 class="rv d1">Seu kit de<br><span class="g">IA grátis</span><br>para o Dr. Erthal.</h1>
-        <p class="lead rv d2" style="margin-top:20px;">Ferramentas gratuitas que funcionam de verdade. Fluxos prontos. Prompts testados. Tudo para elevar o padrão visual acima de qualquer concorrente.</p>
+        <p class="lead rv d2" style="margin-top:20px;">Ferramentas gratuitas que funcionam de verdade. Fluxos prontos. Prompts testados. TikTok com trends em tempo real.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;" class="rv d3">
           <a href="#arsenal" class="btn-prim hoverable"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>Ver Arsenal</a>
-          <a href="#fluxos" class="btn-ghost hoverable">Fluxos de Trabalho</a>
+          <a href="#tiktok" class="btn-tt hoverable">🎵 TikTok Guide</a>
         </div>
       </div>
       <div class="hero-meta rv d2">
         <div class="meta-pill">Foto <span>✓</span></div>
         <div class="meta-pill">Vídeo <span>✓</span></div>
         <div class="meta-pill">Copy <span>✓</span></div>
-        <div class="meta-pill">Áudio <span>✓</span></div>
+        <div class="meta-pill">TikTok <span>✓</span></div>
         <div style="font-family:'Syne',-apple-system,sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);background:rgba(36,216,184,.08);border:1px solid rgba(36,216,184,.2);border-radius:99px;padding:6px 14px;text-align:center;">100% Grátis</div>
       </div>
     </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div><span>scroll</span></div>
 </section>
-
 <div class="div"></div>
+
+<!-- ARSENAL -->
 
 <section id="arsenal">
   <div class="wrap">
@@ -215,25 +285,26 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
     <div class="grid" id="grid">
       <div class="card foto rv" data-c="foto"><div class="card-top"><div class="card-icon">📸</div><span class="badge b-free">Grátis</span></div><h3>Cleanup.pictures</h3><p>Remove logos, marcas d'água e objetos com inpainting perfeito. Reconstrói pele e textura sem borrar. Sem login, sem limite diário.</p><a href="https://cleanup.pictures" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
       <div class="card foto rv d1" data-c="foto"><div class="card-top"><div class="card-icon">🖼️</div><span class="badge b-free">Grátis</span></div><h3>Krea.ai — Enhance</h3><p>Slider de realismo em tempo real. Você ajusta e a imagem se transforma na frente — de clínica bruta para editorial de luxo instantaneamente.</p><a href="https://krea.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-      <div class="card foto rv d2" data-c="foto"><div class="card-top"><div class="card-icon">✂️</div><span class="badge b-free">Grátis</span></div><h3>Remove.bg</h3><p>Remoção de fundo com 1 clique. Isola a paciente para colocar em fundo de estúdio neutro ou degradê profissional.</p><a href="https://remove.bg" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-      <div class="card foto rv" data-c="foto"><div class="card-top"><div class="card-icon">🔬</div><span class="badge b-free">Grátis</span></div><h3>Tensor.art — FLUX.1</h3><p>O modelo FLUX.1 Pro tem a melhor textura de pele da indústria inteira. Fotorrealismo de estúdio de $50k, disponível grátis via Tensor.art.</p><a href="https://tensor.art" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card foto rv d2" data-c="foto"><div class="card-top"><div class="card-icon">✂️</div><span class="badge b-free">Grátis</span></div><h3>Remove.bg</h3><p>Remoção de fundo com 1 clique. Isola a paciente para fundo de estúdio neutro ou degradê profissional.</p><a href="https://remove.bg" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card foto rv" data-c="foto"><div class="card-top"><div class="card-icon">🔬</div><span class="badge b-free">Grátis</span></div><h3>Tensor.art — FLUX.1</h3><p>O modelo FLUX.1 Pro tem a melhor textura de pele da indústria. Fotorrealismo de estúdio disponível grátis via Tensor.art.</p><a href="https://tensor.art" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
       <div class="card foto rv d1" data-c="foto"><div class="card-top"><div class="card-icon">🎨</div><span class="badge b-fm">Freemium</span></div><h3>Ideogram 2.0</h3><p>Única IA que gera texto legível dentro de imagens. Artes com frases de impacto em tipografia editorial — padrão de revista médica de luxo.</p><a href="https://ideogram.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-      <div class="card foto rv d2" data-c="foto"><div class="card-top"><div class="card-icon">✨</div><span class="badge b-fm">Freemium</span></div><h3>Adobe Firefly</h3><p>Generative Fill no navegador. Seleciona qualquer área e descreve o que quer — reconstrói com a iluminação e perspectiva originais da foto.</p><a href="https://firefly.adobe.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card foto rv d2" data-c="foto"><div class="card-top"><div class="card-icon">✨</div><span class="badge b-fm">Freemium</span></div><h3>Adobe Firefly</h3><p>Generative Fill no navegador. Seleciona qualquer área e reconstrói com a iluminação e perspectiva originais da foto.</p><a href="https://firefly.adobe.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
       <div class="card video rv" data-c="video"><div class="card-top"><div class="card-icon">✂️</div><span class="badge b-free">100% Grátis</span></div><h3>CapCut</h3><p>Melhor opção gratuita para Reels com IA. Remove silêncios, gera legendas animadas, aplica filtros cinematográficos. iPhone e PC, sem marca d'água.</p><a href="https://capcut.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
       <div class="card video rv d1" data-c="video"><div class="card-top"><div class="card-icon">🎬</div><span class="badge b-fm">Freemium</span></div><h3>Kling AI 1.6</h3><p>Foto → vídeo com física real de pele. A paciente caminha, sorri, se move com naturalidade. Melhor custo-benefício da categoria.</p><a href="https://klingai.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
       <div class="card video rv d2" data-c="video"><div class="card-top"><div class="card-icon">🌊</div><span class="badge b-fm">Freemium</span></div><h3>Pika Labs 2.2</h3><p>Anima partes específicas — só as pernas em slow-motion, só o rosto sorrindo. 150 créditos grátis por mês, renova automaticamente.</p><a href="https://pika.art" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
       <div class="card video rv" data-c="video"><div class="card-top"><div class="card-icon">📽️</div><span class="badge b-fm">Freemium</span></div><h3>Captions.ai</h3><p>Legendas animadas que parecem design manual. Corta silêncios automaticamente. Transforma vídeo bruto em Reel pronto. Nativo no iPhone.</p><a href="https://captions.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
       <div class="card video rv d1" data-c="video"><div class="card-top"><div class="card-icon">🚀</div><span class="badge b-fm">Freemium</span></div><h3>Runway Gen-4</h3><p>Nível cinematográfico real. Entende câmera, profundidade e lighting. 125 créditos grátis — use nos conteúdos mais estratégicos do mês.</p><a href="https://runwayml.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-      <div class="card video rv d2" data-c="video"><div class="card-top"><div class="card-icon">🔝</div><span class="badge b-fm">Freemium</span></div><h3>Cutout.pro — Video Enhance</h3><p>Upscala e afina vídeos existentes para 4K automaticamente. Salva vídeos antigos do Dr. Rafael e transforma em conteúdo premium sem regravar.</p><a href="https://cutout.pro" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card video rv d2" data-c="video"><div class="card-top"><div class="card-icon">🔝</div><span class="badge b-fm">Freemium</span></div><h3>Cutout.pro — Video Enhance</h3><p>Upscala e afina vídeos para 4K automaticamente. Salva vídeos antigos do Dr. Rafael e transforma em conteúdo premium.</p><a href="https://cutout.pro" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
       <div class="card copy rv" data-c="copy"><div class="card-top"><div class="card-icon">🧠</div><span class="badge b-free">Grátis</span></div><h3>Claude.ai</h3><p>Melhor para roteiros médicos com empatia real. Entende tom clínico, escreve copy de alta conversão e nunca cai em clichê de marketing.</p><a href="https://claude.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-      <div class="card copy rv d1" data-c="copy"><div class="card-top"><div class="card-icon">🔍</div><span class="badge b-free">Grátis</span></div><h3>Perplexity AI</h3><p>Pesquisa médica com fontes reais citadas. Busca dados sobre lipedema, estatísticas e estudos que posicionam o Dr. Rafael como autoridade máxima.</p><a href="https://perplexity.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-      <div class="card audio rv" data-c="audio"><div class="card-top"><div class="card-icon">🎙️</div><span class="badge b-fm">Freemium</span></div><h3>ElevenLabs</h3><p>Clona a voz do Dr. Rafael com 30 segundos de áudio. 10.000 caracteres grátis/mês — suficiente para narrar 8 a 10 Reels curtos por mês.</p><a href="https://elevenlabs.io" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-      <div class="card audio rv d1" data-c="audio"><div class="card-top"><div class="card-icon">✂️</div><span class="badge b-fm">Freemium</span></div><h3>Descript</h3><p>Edita áudio e vídeo como um documento de texto. Remove vícios de linguagem, silêncios e erros apagando palavras no transcript.</p><a href="https://descript.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card copy rv d1" data-c="copy"><div class="card-top"><div class="card-icon">🔍</div><span class="badge b-free">Grátis</span></div><h3>Perplexity AI</h3><p>Pesquisa médica com fontes reais citadas. Busca dados sobre lipedema e estudos que posicionam o Dr. Rafael como autoridade máxima.</p><a href="https://perplexity.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card audio rv" data-c="audio"><div class="card-top"><div class="card-icon">🎙️</div><span class="badge b-fm">Freemium</span></div><h3>ElevenLabs</h3><p>Clona a voz do Dr. Rafael com 30 segundos de áudio. 10.000 caracteres grátis/mês — suficiente para 8 a 10 Reels curtos por mês.</p><a href="https://elevenlabs.io" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card audio rv d1" data-c="audio"><div class="card-top"><div class="card-icon">✂️</div><span class="badge b-fm">Freemium</span></div><h3>Descript</h3><p>Edita áudio e vídeo como um documento de texto. Remove vícios de linguagem e silêncios apagando palavras no transcript.</p><a href="https://descript.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
     </div>
   </div>
 </section>
-
 <div class="div"></div>
+
+<!-- FLUXOS -->
 
 <section id="fluxos">
   <div class="wrap">
@@ -243,17 +314,174 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
       <p class="lead rv d2" style="margin-top:14px;">Abra o que você precisa agora. Prompts prontos para copiar.</p>
     </div>
     <div class="flow-grid">
-      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">01</span><span class="fl">Remover logo sem destruir a foto</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>cleanup.pictures</em> — sem login, sem custo, funciona no iPhone.</div></li><li class="step"><div class="sn">2</div><div class="st"><strong>Upload em máxima resolução.</strong> Quanto maior, melhor a reconstrução.</div></li><li class="step"><div class="sn">3</div><div class="st">Pinte a logo <strong>em pedaços pequenos</strong> — a IA reconstrói textura por camadas.</div></li><li class="step"><div class="sn">4</div><div class="st">Repita 2–3 passadas se restar resíduo. Para pele complexa finalize no <em>Adobe Firefly</em>.</div></li></ol></div></div></div>
-      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">02</span><span class="fl">Foto clínica → editorial de luxo</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Limpe a foto com o Fluxo 01 primeiro.</div></li><li class="step"><div class="sn">2</div><div class="st">Acesse <em>krea.ai → Enhance</em>. Ajuste o slider de "Realism" para <strong>0.65–0.75</strong>.</div></li><li class="step"><div class="sn">3</div><div class="st">Cole o prompt abaixo.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Krea.ai Enhance</div><div class="pt" id="p1">clinical high-end studio photography, ultra-realistic skin texture with visible micro-pores, soft directional side lighting revealing body contour, deep neutral background, luxury medical aesthetic, sharp focus, LipeDefinition style</div><button class="pc hoverable" onclick="cp('p1',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">4</div><div class="st">Para ainda mais realismo: exporte e refine no <em>Tensor.art</em> com FLUX.1 Pro.</div></li></ol></div></div></div>
-      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">03</span><span class="fl">Foto → Reel cinematográfico</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>klingai.com → Image to Video</em>. Carregue a foto do resultado final.</div></li><li class="step"><div class="sn">2</div><div class="st">Modo: <strong>Professional</strong> · Duração: <strong>5s</strong> · Aspecto: <strong>9:16</strong>.</div></li><li class="step"><div class="sn">3</div><div class="st">Use o prompt abaixo.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Kling AI</div><div class="pt" id="p2">smooth vertical cinematic reveal of defined legs, slow upward pan, soft golden studio light, freedom and recovery atmosphere, luxury medical aesthetic, documentary-style camera movement, no distortion, skin texture preserved</div><button class="pc hoverable" onclick="cp('p2',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">4</div><div class="st">Importe no <em>CapCut</em> → legendas → trilha → exporta 1080p.</div></li></ol></div></div></div>
-      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">04</span><span class="fl">Roteiro de Reel que converte</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Abra <em>claude.ai</em>. Cole o prompt mestre abaixo e adicione o tema do vídeo no final.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt Mestre · Claude.ai</div><div class="pt" id="p3">Você é copywriter médico especialista em alta conversão para cirurgiões no Brasil. Crie um roteiro de Reel de 30s para o Dr. Rafael Erthal, especialista em lipedema com técnica LipeDefinition® (formado na Alemanha). Público: mulheres 30-55 com lipedema, sofrendo com dor, inchaço e diagnóstico tardio. Tom: empático, autoridade, esperança real. Estrutura: gancho emocional (0-3s) → dado ou prova social (3-10s) → técnica sem jargão (10-22s) → CTA direto (22-30s). Sem clichês. Foco na transformação funcional: voltar a caminhar sem dor, dormir sem inchaço. Tema do vídeo:</div><button class="pc hoverable" onclick="cp('p3',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">2</div><div class="st">Complete o tema no final. O Claude devolve o roteiro formatado com tempo de cada fala.</div></li></ol></div></div></div>
-      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">05</span><span class="fl">Arte editorial com texto (Ideogram)</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>ideogram.ai</em> → Style: <strong>Design</strong> → Aspect: <strong>9:16</strong>.</div></li><li class="step"><div class="sn">2</div><div class="st">Cole o prompt abaixo trocando a frase pelo texto que você quer na arte.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Ideogram 2.0</div><div class="pt" id="p4">Dark luxury medical editorial poster, large elegant serif headline text reading "LIPEDEFINITION®", subtitle in small clean sans-serif "A técnica que devolveu liberdade", deep navy blue background with subtle gold accent line, minimalist high-end clinic aesthetic, no clutter, 9:16 vertical, professional typography layout</div><button class="pc hoverable" onclick="cp('p4',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">3</div><div class="st">Gere 4 variações, escolha a melhor. Ajuste textos no <em>Canva</em> sem precisar regen.</div></li></ol></div></div></div>
-      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">06</span><span class="fl">Clonar voz do Dr. Rafael</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Grave o Dr. Rafael por <strong>30–60 segundos</strong> em ambiente silencioso.</div></li><li class="step"><div class="sn">2</div><div class="st">Acesse <em>elevenlabs.io → Voice Lab → Add Voice → Instant Voice Clone</em>. Faça upload.</div></li><li class="step"><div class="sn">3</div><div class="st">Cole o roteiro do Fluxo 04. A IA gera narração com a voz dele em segundos.</div></li><li class="step"><div class="sn">4</div><div class="st">Plano grátis: <strong>10.000 caracteres/mês</strong> ≈ 10 Reels. Use nos conteúdos mais estratégicos.</div></li></ol></div></div></div>
+      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">01</span><span class="fl">Remover logo sem destruir a foto</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>cleanup.pictures</em> — sem login, funciona no iPhone.</div></li><li class="step"><div class="sn">2</div><div class="st"><strong>Upload em máxima resolução.</strong> Quanto maior, melhor a reconstrução.</div></li><li class="step"><div class="sn">3</div><div class="st">Pinte a logo <strong>em pedaços pequenos</strong> — a IA reconstrói textura por camadas.</div></li><li class="step"><div class="sn">4</div><div class="st">Repita 2–3 passadas. Para pele complexa finalize no <em>Adobe Firefly</em>.</div></li></ol></div></div></div>
+      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">02</span><span class="fl">Foto clínica → editorial de luxo</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Limpe a foto com o Fluxo 01 primeiro.</div></li><li class="step"><div class="sn">2</div><div class="st">Acesse <em>krea.ai → Enhance</em>. Ajuste o slider para <strong>0.65–0.75</strong>.</div></li><li class="step"><div class="sn">3</div><div class="st">Cole o prompt abaixo.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Krea.ai Enhance</div><div class="pt" id="p1">clinical high-end studio photography, ultra-realistic skin texture with visible micro-pores, soft directional side lighting revealing body contour, deep neutral background, luxury medical aesthetic, sharp focus, LipeDefinition style</div><button class="pc hoverable" onclick="cp('p1',this)">Copiar</button></div></div></div></div>
+      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">03</span><span class="fl">Foto → Reel cinematográfico</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>klingai.com → Image to Video</em>.</div></li><li class="step"><div class="sn">2</div><div class="st">Modo: <strong>Professional</strong> · Duração: <strong>5s</strong> · Aspecto: <strong>9:16</strong>.</div></li><li class="step"><div class="sn">3</div><div class="st">Use o prompt abaixo.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Kling AI</div><div class="pt" id="p2">smooth vertical cinematic reveal of defined legs, slow upward pan, soft golden studio light, freedom and recovery atmosphere, luxury medical aesthetic, documentary-style camera movement, no distortion, skin texture preserved</div><button class="pc hoverable" onclick="cp('p2',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">4</div><div class="st">Importe no <em>CapCut</em> → legendas → trilha → exporta 1080p.</div></li></ol></div></div></div>
+      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">04</span><span class="fl">Roteiro de Reel que converte</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Abra <em>claude.ai</em>. Cole o prompt mestre abaixo + tema do vídeo no final.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt Mestre · Claude.ai</div><div class="pt" id="p3">Você é copywriter médico especialista em alta conversão para cirurgiões no Brasil. Crie um roteiro de Reel de 30s para o Dr. Rafael Erthal, especialista em lipedema com técnica LipeDefinition® (formado na Alemanha). Público: mulheres 30-55 com lipedema, sofrendo com dor, inchaço e diagnóstico tardio. Tom: empático, autoridade, esperança real. Estrutura: gancho emocional (0-3s) → dado ou prova social (3-10s) → técnica sem jargão (10-22s) → CTA direto (22-30s). Sem clichês. Foco na transformação funcional: voltar a caminhar sem dor, dormir sem inchaço. Tema do vídeo:</div><button class="pc hoverable" onclick="cp('p3',this)">Copiar</button></div></div></div></div>
+      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">05</span><span class="fl">Arte editorial com texto (Ideogram)</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>ideogram.ai</em> → Style: <strong>Design</strong> → Aspect: <strong>9:16</strong>.</div></li><li class="step"><div class="sn">2</div><div class="st">Cole o prompt abaixo trocando o texto pelo que você quer na arte.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Ideogram 2.0</div><div class="pt" id="p4">Dark luxury medical editorial poster, large elegant serif headline text reading "LIPEDEFINITION®", subtitle in small clean sans-serif "A técnica que devolveu liberdade", deep navy blue background with subtle gold accent line, minimalist high-end clinic aesthetic, 9:16 vertical, professional typography layout</div><button class="pc hoverable" onclick="cp('p4',this)">Copiar</button></div></div></div></div>
+      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">06</span><span class="fl">Clonar voz do Dr. Rafael</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Grave o Dr. Rafael por <strong>30–60 segundos</strong> em ambiente silencioso.</div></li><li class="step"><div class="sn">2</div><div class="st">Acesse <em>elevenlabs.io → Voice Lab → Add Voice → Instant Voice Clone</em>.</div></li><li class="step"><div class="sn">3</div><div class="st">Cole o roteiro do Fluxo 04. A IA gera narração com a voz dele em segundos.</div></li><li class="step"><div class="sn">4</div><div class="st">Plano grátis: <strong>10.000 caracteres/mês</strong> ≈ 10 Reels estratégicos.</div></li></ol></div></div></div>
     </div>
   </div>
 </section>
-
 <div class="div"></div>
+
+<!-- ══════════════════════════════════════
+     TIKTOK SECTION
+═══════════════════════════════════════ -->
+
+<section id="tiktok">
+  <div class="tt-bg"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+
+```
+<!-- HEADER -->
+<div style="margin-bottom:clamp(28px,4vw,44px);">
+  <div class="eyebrow tt rv">TikTok Mastery</div>
+  <h2 class="rv d1">Trends em tempo real.<br><span class="g-tt">Aprovação garantida.</span></h2>
+  <p class="lead rv d2" style="margin-top:14px;">Tudo que o algoritmo quer. Tudo que a audiência precisa ver. Zero chance de cair no limbo.</p>
+</div>
+
+<!-- SCORE CARDS -->
+<div class="tt-score-wrap">
+  <div class="tt-score rv"><div class="tt-score-val v-pink">3s</div><div class="tt-score-lbl">Janela de retenção — os primeiros 3 segundos decidem tudo. Sem gancho = sem alcance.</div></div>
+  <div class="tt-score rv d1"><div class="tt-score-val v-purple">9:16</div><div class="tt-score-lbl">Único formato aceito com prioridade máxima no FYP. Horizontal é punido.</div></div>
+  <div class="tt-score rv d2"><div class="tt-score-val v-teal">60%</div><div class="tt-score-lbl">Taxa de conclusão mínima para o algoritmo turbinar o vídeo organicamente.</div></div>
+  <div class="tt-score rv d3"><div class="tt-score-val v-amber">7–34s</div><div class="tt-score-lbl">Duração ideal para saúde/bem-estar no TikTok Brasil segundo dados do Creator Portal.</div></div>
+</div>
+
+<!-- TREND RADAR: ferramentas de pesquisa -->
+<h3 class="rv" style="color:var(--white);margin-bottom:6px;margin-top:40px;font-size:1.1rem;">📡 Radar de Trends — onde procurar agora</h3>
+<p class="rv d1" style="font-size:.85rem;color:var(--muted);margin-bottom:4px;">Acesse esses portais <strong style="color:var(--white)">toda segunda-feira antes de planejar a semana.</strong></p>
+<div class="tt-radar">
+
+  <div class="tr-card rv">
+    <div class="tr-header"><div class="tr-icon pink">🔥</div><div><div class="tr-title">TikTok Creative Center</div><div class="tr-sub">Ferramenta oficial · 100% Grátis</div></div></div>
+    <div class="tr-body">O painel oficial do TikTok com dados <strong>em tempo real</strong> de trends, hashtags em alta, músicas virais e anúncios que performam. Filtra por <em>Brasil</em>, categoria <em>Saúde</em> e janela de <em>7 dias</em>.<br><br><strong>O que verificar:</strong> Trending Hashtags → busque "lipedema", "cirurgia", "antes e depois" · Trending Songs → pega as músicas já em alta para usar no vídeo.</div>
+    <div class="tr-links">
+      <a href="https://ads.tiktok.com/business/creativecenter/trends/pc/en" target="_blank" class="tr-link hoverable"><span class="tr-link-l">🌐 TikTok Creative Center</span><span class="tr-link-r">Abrir ↗</span></a>
+      <a href="https://ads.tiktok.com/business/creativecenter/hashtag/pc/en" target="_blank" class="tr-link hoverable"><span class="tr-link-l">📊 Hashtag Insights</span><span class="tr-link-r">Abrir ↗</span></a>
+    </div>
+  </div>
+
+  <div class="tr-card rv d1">
+    <div class="tr-header"><div class="tr-icon purple">📈</div><div><div class="tr-title">TikTok Trend Discovery</div><div class="tr-sub">Inside TikTok · Oficial</div></div></div>
+    <div class="tr-body">Painel separado do Creative Center com <strong>tendências previstas</strong> — mostra o que está <em>subindo antes</em> de viralizar. Ideal para sair na frente. Filtra por país e nicho.<br><br><strong>Dica de ouro:</strong> procure trends de "transformação corporal" e "saúde feminina" toda semana. Adapte o gancho do vídeo para o trend antes de gravar.</div>
+    <div class="tr-links">
+      <a href="https://www.tiktok.com/business/en/blog/tiktok-trend-discovery" target="_blank" class="tr-link hoverable"><span class="tr-link-l">🔮 Trend Discovery</span><span class="tr-link-r">Abrir ↗</span></a>
+    </div>
+  </div>
+
+  <div class="tr-card rv">
+    <div class="tr-header"><div class="tr-icon teal">🔍</div><div><div class="tr-title">Dentro do próprio TikTok</div><div class="tr-sub">Pesquisa nativa · Grátis</div></div></div>
+    <div class="tr-body">A busca interna do TikTok é um radar poderoso. Digite <em>"lipedema"</em> e filtre por <strong>Mais recentes</strong> — veja o que está engajando agora. Os vídeos com mais comentários nas últimas 48h revelam o que a audiência quer ver.<br><br><strong>Bônus:</strong> na aba "Para você" do perfil do Dr. Rafael, o algoritmo já filtra pelo público-alvo. Observe os 5 primeiros vídeos toda manhã — são dados de tendência personalizados.</div>
+    <div class="tr-links">
+      <a href="https://www.tiktok.com/search?q=lipedema" target="_blank" class="tr-link hoverable"><span class="tr-link-l">🔎 Busca: lipedema</span><span class="tr-link-r">Abrir ↗</span></a>
+      <a href="https://www.tiktok.com/search?q=cirurgia+lipedema" target="_blank" class="tr-link hoverable"><span class="tr-link-l">🔎 Busca: cirurgia lipedema</span><span class="tr-link-r">Abrir ↗</span></a>
+    </div>
+  </div>
+
+  <div class="tr-card rv d1">
+    <div class="tr-header"><div class="tr-icon amber">⚡</div><div><div class="tr-title">Exploding Topics + Google Trends</div><div class="tr-sub">Tendências macro · Grátis</div></div></div>
+    <div class="tr-body">Quando uma trend chega ao TikTok, ela já apareceu no Google antes. Use o <em>Google Trends</em> para validar se um tema está subindo no Brasil antes de produzir conteúdo.<br><br><strong>Fluxo rápido:</strong> Google Trends → pesquisa "lipedema" + "cirurgia bariátrica" + compare com "emagrecimento" → veja qual tem mais momentum agora e usa esse tema no próximo vídeo.</div>
+    <div class="tr-links">
+      <a href="https://trends.google.com/trends/explore?geo=BR&q=lipedema" target="_blank" class="tr-link hoverable"><span class="tr-link-l">📊 Google Trends BR: lipedema</span><span class="tr-link-r">Abrir ↗</span></a>
+      <a href="https://explodingtopics.com" target="_blank" class="tr-link hoverable"><span class="tr-link-l">💥 Exploding Topics</span><span class="tr-link-r">Abrir ↗</span></a>
+    </div>
+  </div>
+
+</div>
+
+<!-- SPECS DE APROVAÇÃO -->
+<h3 class="rv" style="color:var(--white);margin-bottom:6px;margin-top:48px;font-size:1.1rem;">✅ Specs técnicas — aprovação sem drama</h3>
+<p class="rv d1" style="font-size:.85rem;color:var(--muted);margin-bottom:4px;">Vídeo fora desses parâmetros = alcance reduzido automaticamente pelo algoritmo.</p>
+<table class="spec-table rv d2">
+  <thead><tr><th>Parâmetro</th><th>Valor Ideal</th><th>Consequência se errar</th></tr></thead>
+  <tbody>
+    <tr><td>Formato</td><td><em>9:16 vertical</em></td><td>Horizontal recebe até 60% menos distribuição</td></tr>
+    <tr><td>Resolução</td><td><em>1080×1920px mín.</em></td><td>Vídeo pixelado é marcado como baixa qualidade</td></tr>
+    <tr><td>Duração</td><td><em>7–34 segundos</em></td><td>Vídeos muito longos perdem retenção e saem do FYP</td></tr>
+    <tr><td>FPS</td><td><em>30fps ou 60fps</em></td><td>Abaixo de 24fps parece amador e reduz watch time</td></tr>
+    <tr><td>Áudio</td><td><em>Música licenciada do TikTok</em></td><td>Áudio externo = sem elegibilidade para FYP</td></tr>
+    <tr><td>Texto na tela</td><td><em>Fora dos 15% das bordas</em></td><td>Texto cortado na UI do app</td></tr>
+    <tr><td>Legenda</td><td><em>Obrigatória</em></td><td>Sem legenda = -30% de retenção. Deaf audience ignorada.</td></tr>
+    <tr><td>Hashtags</td><td><em>3–5 relevantes</em></td><td>Muitas hashtags = parecem spam para o algoritmo</td></tr>
+    <tr><td>Posting time BR</td><td><em>19h–22h ou 6h–8h</em></td><td>Publicar fora do horário = menos janela de alcance inicial</td></tr>
+    <tr><td>Watermark</td><td><em>Zero watermarks</em></td><td>Watermark de outro app (Reels, CapCut logo) = punição imediata</td></tr>
+  </tbody>
+</table>
+
+<!-- ALERTA MÉDICO -->
+<div class="alert rv d2" style="margin-top:20px;">
+  <div class="alert-icon">⚠️</div>
+  <div class="alert-body"><strong>Conteúdo médico no TikTok:</strong> evite afirmações de resultado garantido, "cura", "elimina 100%" — o algoritmo de moderação suspende contas médicas por isso. Use sempre linguagem de <strong>possibilidade e transformação</strong>: "pode ajudar", "muitas pacientes relatam", "minha experiência com". Isso também é mais verdadeiro e ético.</div>
+</div>
+<div class="alert green rv d3" style="margin-top:12px;">
+  <div class="alert-icon">💡</div>
+  <div class="alert-body"><strong>Hack de aprovação:</strong> poste o vídeo primeiro como <strong>Somente para mim</strong>, aguarde 10 minutos, depois troque para Público. Esse comportamento simula re-edição e sinaliza cuidado ao algoritmo — alguns criadores de saúde reportam até 40% a mais de alcance inicial.</div>
+</div>
+
+<!-- PROMPT TIKTOK -->
+<h3 class="rv" style="color:var(--white);margin-bottom:16px;margin-top:48px;font-size:1.1rem;">🎵 Prompts prontos para TikTok</h3>
+<div class="flow-grid">
+
+  <div class="fc rv">
+    <div class="fh hoverable" onclick="tog(this)"><span class="fn" style="color:var(--pink);">T1</span><span class="fl">Gancho de 3s que para o scroll</span><div class="fi" style="background:var(--pink-dim);color:var(--pink);border-color:rgba(255,45,85,.2);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+    <div class="fb-body"><div class="fi-body">
+      <div class="tr-body" style="margin-bottom:14px;">Cole no Claude.ai com o tema do vídeo. O objetivo é criar a frase de abertura que aparece nos primeiros 3 segundos — texto na tela + fala do Dr. Rafael.</div>
+      <div class="pw"><div class="pl" style="color:var(--pink);">🎵 Prompt · Gancho TikTok</div><div class="pt" id="tt1">Crie 5 opções de gancho de 3 segundos para TikTok para o Dr. Rafael Erthal, cirurgião de lipedema. O gancho deve aparecer como texto na tela E ser dito em voz alta. Fórmulas: (1) pergunta que dói — "Você sente dor nas pernas sem motivo?", (2) dado chocante — "9 em 10 mulheres com lipedema foram ignoradas pelo médico", (3) promessa rápida — "Você vai entender seu corpo em 20 segundos", (4) contra-intuitivo — "Emagrecer não resolve lipedema. Eu vou te explicar por quê", (5) identificação — "Se você usa meia calça pra esconder as pernas, esse vídeo é pra você". Tema do vídeo:</div><button class="pc hoverable" style="color:var(--pink);border-color:rgba(255,45,85,.22);background:var(--pink-dim);" onclick="cp('tt1',this)">Copiar</button></div>
+    </div></div>
+  </div>
+
+  <div class="fc rv d1">
+    <div class="fh hoverable" onclick="tog(this)"><span class="fn" style="color:var(--pink);">T2</span><span class="fl">Roteiro completo formato TikTok</span><div class="fi" style="background:var(--pink-dim);color:var(--pink);border-color:rgba(255,45,85,.2);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+    <div class="fb-body"><div class="fi-body">
+      <div class="tr-body" style="margin-bottom:14px;">Diferente do Reel, o TikTok tem linguagem mais crua, direta e pessoal. Esse prompt gera um roteiro otimizado para o algoritmo do TikTok especificamente.</div>
+      <div class="pw"><div class="pl" style="color:var(--pink);">🎵 Prompt · Roteiro TikTok</div><div class="pt" id="tt2">Você é especialista em conteúdo viral de saúde no TikTok Brasil. Crie um roteiro de 20–28 segundos para o Dr. Rafael Erthal (cirurgião de lipedema, LipeDefinition®). Formato TikTok: linguagem direta, como se fosse uma conversa íntima com a câmera. Estrutura: Gancho 0–3s (frase que para o scroll, texto na tela em maiúsculas) → Problema/dor 3–10s (validar o sofrimento da paciente) → Virada/solução 10–20s (apresentar LipeDefinition® como saída real, sem prometer cura) → CTA 20–28s (comentar "QUERO SABER MAIS" ou link na bio). Inclua sugestão de música pelo feeling: ex. "música emocional/instrumental leve". Tema:</div><button class="pc hoverable" style="color:var(--pink);border-color:rgba(255,45,85,.22);background:var(--pink-dim);" onclick="cp('tt2',this)">Copiar</button></div>
+    </div></div>
+  </div>
+
+  <div class="fc rv">
+    <div class="fh hoverable" onclick="tog(this)"><span class="fn" style="color:var(--purple);">T3</span><span class="fl">Caption + hashtags otimizados</span><div class="fi" style="background:var(--purple-dim);color:var(--purple);border-color:rgba(168,85,247,.2);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+    <div class="fb-body"><div class="fi-body">
+      <div class="tr-body" style="margin-bottom:14px;">A caption do TikTok tem peso SEO real — o algoritmo lê o texto para decidir para quem distribuir. Esse prompt gera caption + 5 hashtags estratégicas.</div>
+      <div class="pw"><div class="pl" style="color:var(--purple);">📝 Prompt · Caption TikTok</div><div class="pt" id="tt3">Crie uma caption para TikTok do Dr. Rafael Erthal (cirurgião de lipedema) com: (1) primeira frase com a palavra-chave principal natural — não forçada, (2) 1–2 linhas que completam o gancho do vídeo e incentivam comentário ou clique no link, (3) chamada para comentar uma palavra específica ex. "comente DÚVIDA", (4) exatamente 5 hashtags estratégicas — mistura de alta competição (#lipedema, #saúde) com baixa/média competição (#lipedematratamento, #LipeDefinition). Nunca use mais de 5 hashtags. Tema do vídeo:</div><button class="pc hoverable" style="color:var(--purple);border-color:rgba(168,85,247,.22);background:var(--purple-dim);" onclick="cp('tt3',this)">Copiar</button></div>
+    </div></div>
+  </div>
+
+  <div class="fc rv d1">
+    <div class="fh hoverable" onclick="tog(this)"><span class="fn" style="color:var(--purple);">T4</span><span class="fl">Adaptar trend viral para saúde</span><div class="fi" style="background:var(--purple-dim);color:var(--purple);border-color:rgba(168,85,247,.2);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+    <div class="fb-body"><div class="fi-body">
+      <div class="tr-body" style="margin-bottom:14px;">Você achou uma trend no Creative Center. Esse prompt transforma qualquer trend genérica num vídeo médico de autoridade sem perder o ritmo viral.</div>
+      <div class="pw"><div class="pl" style="color:var(--purple);">🔄 Prompt · Adaptar Trend</div><div class="pt" id="tt4">Adapte a seguinte trend do TikTok para o Dr. Rafael Erthal, cirurgião especialista em lipedema. A adaptação deve manter a estrutura/formato da trend mas traduzir para o universo médico de lipedema com tom de autoridade empática. Mantenha a duração original da trend. Não force — se a trend não encaixa naturalmente, sugira um ajuste leve. A trend é: [COLE AQUI A DESCRIÇÃO DA TREND]. Público-alvo: mulheres 30–55 anos com lipedema, sofrendo com diagnóstico tardio ou falta de solução.</div><button class="pc hoverable" style="color:var(--purple);border-color:rgba(168,85,247,.22);background:var(--purple-dim);" onclick="cp('tt4',this)">Copiar</button></div>
+    </div></div>
+  </div>
+
+</div>
+
+<!-- CHECKLIST TIKTOK -->
+<h3 class="rv" style="color:var(--white);margin-bottom:6px;margin-top:48px;font-size:1.1rem;">✅ Checklist — antes de publicar no TikTok</h3>
+<div class="prog rv d1" style="margin-top:16px;"><div class="prog-h"><span class="prog-l">TikTok Pronto</span><span class="prog-n" id="ttn">0 / 12</span></div><div class="prog-track"><div class="prog-fill" id="ttf" style="background:linear-gradient(90deg,var(--pink),var(--purple));"></div></div></div>
+<div class="tt-check-grid">
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Resolução 1080×1920 (9:16 vertical)</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Duração entre 7 e 34 segundos</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Gancho visível nos primeiros 3 segundos</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Música da biblioteca oficial do TikTok</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Legenda/closed caption ativa</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Zero watermark de outro app</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Texto na tela dentro da área segura (não nas bordas)</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Caption com palavra-chave natural + CTA</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Máximo 5 hashtags relevantes</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Sem promessas de "cura" ou "resultado garantido"</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Publicado entre 19h–22h ou 6h–8h (horário BR)</span></div>
+  <div class="ci hoverable" onclick="ttck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Consentimento documentado (se houver paciente)</span></div>
+</div>
+```
+
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- REFERÊNCIA RÁPIDA -->
 
 <section id="ref">
   <div class="wrap">
@@ -267,21 +495,22 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
       <div class="qr rv d2"><div class="qr-t">Remover fundo</div><div class="qr-d">remove.bg → 1 clique → fundo transparente pronto para Canva</div><a href="https://remove.bg" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
       <div class="qr rv"><div class="qr-t">Arte com texto</div><div class="qr-d">ideogram.ai → Style: Design → 9:16 → 4 variações → escolhe</div><a href="https://ideogram.ai" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
       <div class="qr rv d1"><div class="qr-t">Foto → vídeo</div><div class="qr-d">klingai.com → Image to Video → Professional → 5s → 9:16</div><a href="https://klingai.com" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
-      <div class="qr rv d2"><div class="qr-t">Editar Reel</div><div class="qr-d">CapCut → remove silêncios → legendas automáticas → filtro cine</div><a href="https://capcut.com" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
-      <div class="qr rv"><div class="qr-t">Legendas animadas</div><div class="qr-d">captions.ai → importa vídeo → estilo animado → exporta 9:16</div><a href="https://captions.ai" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
-      <div class="qr rv d1"><div class="qr-t">Roteiro copy</div><div class="qr-d">claude.ai → Prompt Mestre (Fluxo 04) + tema do vídeo</div><a href="https://claude.ai" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
-      <div class="qr rv d2"><div class="qr-t">Voz clonada</div><div class="qr-d">elevenlabs.io → Instant Voice Clone → 30s de áudio</div><a href="https://elevenlabs.io" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
-      <div class="qr rv"><div class="qr-t">Upscale vídeo</div><div class="qr-d">cutout.pro → Video Enhancer → até 4K → elimina ruído</div><a href="https://cutout.pro" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
+      <div class="qr rv d2"><div class="qr-t">Editar Reel/TikTok</div><div class="qr-d">CapCut → remove silêncios → legendas automáticas → filtro cine</div><a href="https://capcut.com" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
+      <div class="qr rv"><div class="qr-t">Trends TikTok</div><div class="qr-d">ads.tiktok.com/creativecenter → filtra Brasil + Saúde + 7 dias</div><a href="https://ads.tiktok.com/business/creativecenter/trends/pc/en" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
+      <div class="qr rv d1"><div class="qr-t">Roteiro copy</div><div class="qr-d">claude.ai → Prompt Mestre ou Prompt TikTok + tema</div><a href="https://claude.ai" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
+      <div class="qr rv d2"><div class="qr-t">Google Trends BR</div><div class="qr-d">trends.google.com → busca "lipedema" → filtra Brasil · 7 dias</div><a href="https://trends.google.com/trends/explore?geo=BR&q=lipedema" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
+      <div class="qr rv"><div class="qr-t">Voz clonada</div><div class="qr-d">elevenlabs.io → Instant Voice Clone → 30s de áudio</div><a href="https://elevenlabs.io" target="_blank" class="qr-l hoverable">Abrir ↗</a></div>
     </div>
   </div>
 </section>
-
 <div class="div"></div>
+
+<!-- CHECKLIST GERAL -->
 
 <section id="checklist">
   <div class="wrap">
     <div style="margin-bottom:clamp(28px,4vw,44px);">
-      <div class="eyebrow rv">Checklist</div>
+      <div class="eyebrow rv">Checklist Geral</div>
       <h2 class="rv d1">Antes de<br><span class="g">publicar.</span></h2>
       <p class="lead rv d2" style="margin-top:14px;">Régua interna. Marque o que está ok.</p>
     </div>
@@ -289,7 +518,7 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
     <div class="cl-grid">
       <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Logo removida sem rastros (Cleanup.pictures)</span></div>
       <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Imagem em alta resolução (mín. 1080px)</span></div>
-      <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Formato 9:16 para Reels e Stories</span></div>
+      <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Formato 9:16 para Reels e TikTok</span></div>
       <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Zero carnificina — foco em contorno e dignidade</span></div>
       <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Copy revisado: toca na transformação, não no medo</span></div>
       <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Legendas no vídeo (CapCut ou Captions.ai)</span></div>
@@ -300,8 +529,9 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
     </div>
   </div>
 </section>
-
 <div class="div"></div>
+
+<!-- FOOTER -->
 
 <section id="footer">
   <div class="footer-glow"></div>
@@ -312,7 +542,6 @@ p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
     <div class="footer-sig rv d3"><span>BLUE</span> · Rebeca × Dr. Rafael Erthal</div>
   </div>
 </section>
-
 </main>
 
 <script>
@@ -321,7 +550,8 @@ const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-4)+'px';cur.style.top=(my-4)+'px';});
 setInterval(()=>{rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=(rx-16)+'px';curR.style.top=(ry-16)+'px';},10);
-document.querySelectorAll('.hoverable,button,a,[onclick]').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});
+function addHover(){document.querySelectorAll('.hoverable,button,a,[onclick]').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});}
+addHover();
 
 // CANVAS
 const cv=document.getElementById('cv'),cx=cv.getContext('2d');
@@ -340,7 +570,7 @@ loop();
 
 // LOADER
 const ld=document.getElementById('ld'),nav=document.getElementById('nav'),lf=document.getElementById('lf'),lm=document.getElementById('lm');
-const msgs=['Carregando ferramentas...','Compilando fluxos...','LipeDefinition® ready','✓'];
+const msgs=['Carregando ferramentas...','Compilando fluxos...','TikTok trends loaded...','LipeDefinition® ready','✓'];
 let prog=0,mi=0;
 const iv=setInterval(()=>{
   prog+=Math.random()*18+8;
@@ -352,7 +582,7 @@ const iv=setInterval(()=>{
 // SCROLL
 const sp=document.getElementById('sp');
 addEventListener('scroll',()=>{sp.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';updNav();});
-function updNav(){const ids=['hero','arsenal','fluxos','ref','checklist'];let a='hero';ids.forEach(id=>{const e=document.getElementById(id);if(e&&scrollY>=e.offsetTop-160)a=id;});document.querySelectorAll('#nav a').forEach(x=>x.classList.toggle('on',x.getAttribute('href')==='#'+a));}
+function updNav(){const ids=['hero','arsenal','fluxos','tiktok','ref','checklist'];let a='hero';ids.forEach(id=>{const e=document.getElementById(id);if(e&&scrollY>=e.offsetTop-160)a=id;});document.querySelectorAll('#nav a').forEach(x=>x.classList.toggle('on',x.getAttribute('href')==='#'+a));}
 
 // REVEAL
 const rvEls=document.querySelectorAll('.rv');
@@ -360,7 +590,7 @@ const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.targ
 function revAll(){rvEls.forEach(el=>obs.observe(el));}
 
 // TILT
-document.querySelectorAll('.card,.qr').forEach(el=>{
+document.querySelectorAll('.card,.qr,.tt-score,.tr-card').forEach(el=>{
   el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`translateY(-4px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;el.style.transformStyle='preserve-3d';});
   el.addEventListener('mouseleave',()=>{el.style.transform='';});
 });
@@ -372,10 +602,13 @@ function tog(head){const item=head.parentElement,body=item.querySelector('.fb-bo
 document.querySelectorAll('.filter-row .fb').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-row .fb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');const f=btn.dataset.f;document.querySelectorAll('#grid .card').forEach((c,i)=>{const show=f==='all'||c.dataset.c===f;c.classList.toggle('hidden',!show);if(show){c.style.opacity='0';c.style.transform='translateY(14px)';setTimeout(()=>{c.style.transition='opacity .3s,transform .3s';c.style.opacity='1';c.style.transform='';},i*25);}});});});
 
 // COPY
-function cp(id,btn){navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{btn.textContent='✓ Ok';btn.classList.add('ok');const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>{btn.textContent='Copiar';btn.classList.remove('ok');t.classList.remove('show');},2200);});}
+function cp(id,btn){navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{const orig=btn.textContent;btn.textContent='✓ Ok';btn.classList.add('ok');const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>{btn.textContent=orig;btn.classList.remove('ok');t.classList.remove('show');},2200);});}
 
-// CHECKLIST
-function ck(el){el.classList.toggle('done');const all=document.querySelectorAll('.ci').length,done=document.querySelectorAll('.ci.done').length;document.getElementById('pn').textContent=done+' / '+all;document.getElementById('pf').style.width=(done/all*100)+'%';}
+// CHECKLIST GERAL
+function ck(el){el.classList.toggle('done');const all=document.querySelectorAll('#checklist .ci').length,done=document.querySelectorAll('#checklist .ci.done').length;document.getElementById('pn').textContent=done+' / '+all;document.getElementById('pf').style.width=(done/all*100)+'%';}
+
+// CHECKLIST TIKTOK
+function ttck(el){el.classList.toggle('done');const all=document.querySelectorAll('.tt-check-grid .ci').length,done=document.querySelectorAll('.tt-check-grid .ci.done').length;document.getElementById('ttn').textContent=done+' / '+all;document.getElementById('ttf').style.width=(done/all*100)+'%';}
 </script>
 
 </body>
