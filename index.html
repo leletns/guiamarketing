@@ -5,217 +5,148 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blue · Kit Interno de IA · Rebeca</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink:       #04080f;
-  --deep:      #070e1e;
-  --surface:   #0b1326;
-  --raised:    #0f1a30;
-  --border:    rgba(255,255,255,0.07);
-  --border-hi: rgba(82,145,255,0.35);
-  --blue:      #3a7fff;
-  --blue-dim:  rgba(58,127,255,0.12);
-  --blue-glow: rgba(58,127,255,0.22);
-  --teal:      #24d8b8;
-  --teal-dim:  rgba(36,216,184,0.1);
-  --amber:     #f0b429;
-  --amber-dim: rgba(240,180,41,0.1);
-  --rose:      #ff6b8a;
-  --rose-dim:  rgba(255,107,138,0.1);
-  --white:     #eef2ff;
-  --muted:     #7b90b8;
-  --subtle:    rgba(123,144,184,0.45);
-  --radius-sm: 10px;
-  --radius:    16px;
-  --ease:      cubic-bezier(0.16,1,0.3,1);
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Syne:wght@600;700;800&display=swap');
+:root{--ink:#04080f;--deep:#070e1e;--surface:#0b1326;--raised:#0f1a30;--border:rgba(255,255,255,0.07);--border-hi:rgba(82,145,255,0.35);--blue:#3a7fff;--blue-dim:rgba(58,127,255,0.12);--blue-glow:rgba(58,127,255,0.22);--teal:#24d8b8;--teal-dim:rgba(36,216,184,0.1);--amber:#f0b429;--amber-dim:rgba(240,180,41,0.1);--rose:#ff6b8a;--rose-dim:rgba(255,107,138,0.1);--white:#eef2ff;--muted:#7b90b8;--subtle:rgba(123,144,184,0.45);--radius-sm:10px;--radius:16px;--ease:cubic-bezier(0.16,1,0.3,1);}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;scroll-padding-top:80px;}
-body{background:var(--ink);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;line-height:1.6;}
+body{background:var(--ink);color:var(--white);font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow-x:hidden;cursor:none;line-height:1.6;}
 ::selection{background:var(--blue-dim);color:var(--blue);}
-
-/* CURSOR */
-#cur{position:fixed;width:8px;height:8px;background:var(–blue);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .08s,background .3s;}
-#curR{position:fixed;width:32px;height:32px;border:1.5px solid rgba(58,127,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transition:width .3s var(–ease),height .3s var(–ease),border-color .3s,transform .14s var(–ease);}
-body.h #cur{transform:scale(3);background:var(–amber);}
-body.h #curR{width:48px;height:48px;border-color:var(–amber);}
-
-/* CANVAS */
+#cur{position:fixed;width:8px;height:8px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .08s,background .3s;}
+#curR{position:fixed;width:32px;height:32px;border:1.5px solid rgba(58,127,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transition:width .3s var(--ease),height .3s var(--ease),border-color .3s,transform .14s var(--ease);}
+body.h #cur{transform:scale(3);background:var(--amber);}
+body.h #curR{width:48px;height:48px;border-color:var(--amber);}
 #cv{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.65;}
-
-/* LOADER */
-#ld{position:fixed;inset:0;z-index:2000;background:var(–ink);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .7s var(–ease),visibility .7s;}
+#ld{position:fixed;inset:0;z-index:2000;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .7s var(--ease),visibility .7s;}
 #ld.out{opacity:0;visibility:hidden;}
-.ld-mark{font-family:‘Syne’,sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.02em;color:var(–white);margin-bottom:6px;}
-.ld-mark em{color:var(–blue);font-style:normal;}
-.ld-sub{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(–muted);margin-bottom:40px;}
+.ld-mark{font-family:'Syne',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.02em;color:var(--white);margin-bottom:6px;}
+.ld-mark em{color:var(--blue);font-style:normal;}
+.ld-sub{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:40px;}
 .ld-track{width:180px;height:1.5px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;}
-.ld-fill{height:100%;width:0%;background:linear-gradient(90deg,var(–blue),var(–teal));transition:width .12s linear;}
-.ld-msg{margin-top:14px;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(–blue);font-family:‘Syne’,sans-serif;min-height:1em;}
-
-/* SCROLL BAR */
-#sp{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(–blue),var(–teal));z-index:999;}
-
-/* NAV */
-#nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:800;background:rgba(7,14,30,.8);backdrop-filter:blur(24px);border:1px solid var(–border);border-radius:99px;padding:8px 20px;display:flex;align-items:center;gap:2px;opacity:0;transition:opacity .5s var(–ease);white-space:nowrap;}
+.ld-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--teal));transition:width .12s linear;}
+.ld-msg{margin-top:14px;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);font-family:'Syne',-apple-system,sans-serif;min-height:1em;}
+#sp{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--teal));z-index:999;}
+#nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:800;background:rgba(7,14,30,.8);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:99px;padding:8px 20px;display:flex;align-items:center;gap:2px;opacity:0;transition:opacity .5s var(--ease);white-space:nowrap;}
 #nav.vis{opacity:1;}
-#nav a{font-family:‘Syne’,sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);text-decoration:none;padding:5px 14px;border-radius:99px;transition:all .25s;cursor:none;}
-#nav a:hover{color:var(–white);background:var(–blue-dim);}
-#nav a.on{color:var(–white);background:var(–blue);}
-
-/* LAYOUT */
+#nav a{font-family:'Syne',-apple-system,sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:5px 14px;border-radius:99px;transition:all .25s;cursor:none;}
+#nav a:hover{color:var(--white);background:var(--blue-dim);}
+#nav a.on{color:var(--white);background:var(--blue);}
 main{position:relative;z-index:1;}
 .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
 section{padding:clamp(60px,8vw,110px) 0;}
-
-/* REVEAL */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(–ease),transform .7s var(–ease);}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
 .rv.in{opacity:1;transform:none;}
-.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
-.d4{transition-delay:.28s}.d5{transition-delay:.35s}
-
-/* TYPE */
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:‘Syne’,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(–blue);margin-bottom:14px;}
-.eyebrow::before{content:’’;display:block;width:16px;height:1.5px;background:var(–blue);}
-h1{font-family:‘Syne’,sans-serif;font-weight:800;font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:1.08;letter-spacing:-.03em;}
-h2{font-family:‘Syne’,sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,3rem);line-height:1.12;letter-spacing:-.025em;}
-h3{font-family:‘Syne’,sans-serif;font-weight:700;font-size:1.05rem;line-height:1.3;}
-.g{background:linear-gradient(135deg,var(–white) 20%,var(–blue) 65%,var(–teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
-
-/* HERO */
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}.d5{transition-delay:.35s}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',-apple-system,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
+.eyebrow::before{content:'';display:block;width:16px;height:1.5px;background:var(--blue);}
+h1{font-family:'Syne',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:800;font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:1.08;letter-spacing:-.03em;}
+h2{font-family:'Syne',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,3rem);line-height:1.12;letter-spacing:-.025em;}
+h3{font-family:'Syne',-apple-system,sans-serif;font-weight:700;font-size:1.05rem;line-height:1.3;}
+.g{background:linear-gradient(135deg,var(--white) 20%,var(--blue) 65%,var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+p.lead{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:560px;}
 #hero{min-height:100svh;display:flex;align-items:center;padding-top:80px;position:relative;}
 .hero-wrap{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;}
 @media(max-width:680px){.hero-wrap{grid-template-columns:1fr;}}
-.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(–blue-dim);border:1px solid rgba(58,127,255,.25);border-radius:99px;padding:7px 16px;margin-bottom:28px;font-family:‘Syne’,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(–blue);}
-.dot{width:6px;height:6px;border-radius:50%;background:var(–blue);animation:pd 2s infinite;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--blue-dim);border:1px solid rgba(58,127,255,.25);border-radius:99px;padding:7px 16px;margin-bottom:28px;font-family:'Syne',-apple-system,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pd 2s infinite;}
 @keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
 .hero-meta{display:flex;flex-direction:column;align-items:flex-end;gap:16px;padding-bottom:8px;}
 @media(max-width:680px){.hero-meta{align-items:flex-start;}}
-.meta-pill{font-family:‘Syne’,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(–muted);border:1px solid var(–border);border-radius:99px;padding:6px 14px;white-space:nowrap;}
-.meta-pill span{color:var(–teal);}
-.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(–subtle);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;position:absolute;bottom:36px;left:50%;transform:translateX(-50%);animation:bob 2.4s ease-in-out infinite;}
-.scroll-line{width:1px;height:36px;background:linear-gradient(var(–blue),transparent);}
+.meta-pill{font-family:'Syne',-apple-system,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:6px 14px;white-space:nowrap;}
+.meta-pill span{color:var(--teal);}
+.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--subtle);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;position:absolute;bottom:36px;left:50%;transform:translateX(-50%);animation:bob 2.4s ease-in-out infinite;}
+.scroll-line{width:1px;height:36px;background:linear-gradient(var(--blue),transparent);}
 @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
-
-/* BUTTONS */
-.btn-prim{display:inline-flex;align-items:center;gap:8px;background:var(–blue);color:#fff;padding:13px 26px;border-radius:99px;font-family:‘Syne’,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .3s;box-shadow:0 0 28px rgba(58,127,255,.4);}
+.btn-prim{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:13px 26px;border-radius:99px;font-family:'Syne',-apple-system,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .3s;box-shadow:0 0 28px rgba(58,127,255,.4);}
 .btn-prim:hover{box-shadow:0 0 44px rgba(58,127,255,.6);transform:translateY(-2px);}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(–muted);padding:13px 26px;border-radius:99px;font-family:‘Syne’,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(–border);transition:all .3s;}
-.btn-ghost:hover{color:var(–white);border-color:var(–border-hi);}
-
-/* FILTER */
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--muted);padding:13px 26px;border-radius:99px;font-family:'Syne',-apple-system,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border);transition:all .3s;}
+.btn-ghost:hover{color:var(--white);border-color:var(--border-hi);}
 .filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px;}
-.fb{padding:7px 18px;border-radius:99px;border:1px solid var(–border);background:transparent;color:var(–muted);font-family:‘Syne’,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:all .25s;}
-.fb:hover{color:var(–white);border-color:var(–blue);background:var(–blue-dim);}
-.fb.on{color:var(–white);background:var(–blue);border-color:var(–blue);}
-
-/* CARDS GRID */
+.fb{padding:7px 18px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Syne',-apple-system,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:all .25s;}
+.fb:hover{color:var(--white);border-color:var(--blue);background:var(--blue-dim);}
+.fb.on{color:var(--white);background:var(--blue);border-color:var(--blue);}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(294px,1fr));gap:16px;}
-.card{background:var(–surface);border:1px solid var(–border);border-radius:var(–radius);padding:24px 26px;position:relative;overflow:hidden;transition:border-color .3s,transform .35s var(–ease),box-shadow .35s;transform-style:preserve-3d;will-change:transform;}
-.card::before{content:’’;position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(58,127,255,.25),transparent);opacity:0;transition:opacity .3s;}
-.card:hover{border-color:var(–border-hi);box-shadow:0 16px 48px rgba(10,20,50,.6),0 0 0 1px rgba(58,127,255,.08);transform:translateY(-5px);}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;position:relative;overflow:hidden;transition:border-color .3s,transform .35s var(--ease),box-shadow .35s;transform-style:preserve-3d;will-change:transform;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(58,127,255,.25),transparent);opacity:0;transition:opacity .3s;}
+.card:hover{border-color:var(--border-hi);box-shadow:0 16px 48px rgba(10,20,50,.6),0 0 0 1px rgba(58,127,255,.08);transform:translateY(-5px);}
 .card:hover::before{opacity:1;}
-.card.foto:hover{border-color:rgba(58,127,255,.45);}
-.card.video:hover{border-color:rgba(36,216,184,.35);}
-.card.copy:hover{border-color:rgba(240,180,41,.35);}
-.card.audio:hover{border-color:rgba(255,107,138,.35);}
 .card.hidden{display:none;}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;}
 .card-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
-.foto .card-icon{background:var(–blue-dim);}
-.video .card-icon{background:var(–teal-dim);}
-.copy .card-icon{background:var(–amber-dim);}
-.audio .card-icon{background:var(–rose-dim);}
-.badge{font-family:‘Syne’,sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:99px;}
-.b-free{background:rgba(36,216,184,.12);color:var(–teal);border:1px solid rgba(36,216,184,.25);}
-.b-fm{background:rgba(240,180,41,.1);color:var(–amber);border:1px solid rgba(240,180,41,.22);}
-.card h3{margin-bottom:6px;color:var(–white);font-size:.98rem;}
-.card p{font-size:.82rem;color:var(–muted);line-height:1.65;margin-bottom:14px;}
-.cl{display:inline-flex;align-items:center;gap:5px;font-family:‘Syne’,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–blue);text-decoration:none;transition:gap .25s;cursor:none;}
-.video .cl{color:var(–teal);}
-.copy .cl{color:var(–amber);}
-.audio .cl{color:var(–rose);}
+.foto .card-icon{background:var(--blue-dim);}
+.video .card-icon{background:var(--teal-dim);}
+.copy .card-icon{background:var(--amber-dim);}
+.audio .card-icon{background:var(--rose-dim);}
+.badge{font-family:'Syne',-apple-system,sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:99px;}
+.b-free{background:rgba(36,216,184,.12);color:var(--teal);border:1px solid rgba(36,216,184,.25);}
+.b-fm{background:rgba(240,180,41,.1);color:var(--amber);border:1px solid rgba(240,180,41,.22);}
+.card h3{margin-bottom:6px;color:var(--white);font-size:.98rem;}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+.cl{display:inline-flex;align-items:center;gap:5px;font-family:'Syne',-apple-system,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;transition:gap .25s;cursor:none;}
+.video .cl{color:var(--teal);}
+.copy .cl{color:var(--amber);}
+.audio .cl{color:var(--rose);}
 .cl:hover{gap:9px;}
 .cl svg{transition:transform .25s;}
 .cl:hover svg{transform:translate(2px,-2px);}
-
-/* FLOW */
 .flow-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px;}
 @media(max-width:680px){.flow-grid{grid-template-columns:1fr;}}
-.fc{background:var(–surface);border:1px solid var(–border);border-radius:var(–radius);overflow:hidden;transition:border-color .3s;}
-.fc.open{border-color:var(–border-hi);}
+.fc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .3s;}
+.fc.open{border-color:var(--border-hi);}
 .fh{display:flex;align-items:center;gap:14px;padding:20px 22px;cursor:none;user-select:none;}
-.fn{font-family:‘Syne’,sans-serif;font-size:.6rem;font-weight:800;color:var(–blue);letter-spacing:.08em;opacity:.55;width:20px;flex-shrink:0;}
-.fl{font-family:‘Syne’,sans-serif;font-size:.88rem;font-weight:700;color:var(–white);flex:1;line-height:1.3;}
-.fi{width:26px;height:26px;border-radius:7px;background:var(–blue-dim);border:1px solid var(–border);display:flex;align-items:center;justify-content:center;color:var(–blue);flex-shrink:0;transition:all .3s;}
-.fc.open .fi{background:var(–blue);border-color:var(–blue);color:#fff;transform:rotate(45deg);}
-.fb-body{max-height:0;overflow:hidden;transition:max-height .5s var(–ease);}
+.fn{font-family:'Syne',-apple-system,sans-serif;font-size:.6rem;font-weight:800;color:var(--blue);letter-spacing:.08em;opacity:.55;width:20px;flex-shrink:0;}
+.fl{font-family:'Syne',-apple-system,sans-serif;font-size:.88rem;font-weight:700;color:var(--white);flex:1;line-height:1.3;}
+.fi{width:26px;height:26px;border-radius:7px;background:var(--blue-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--blue);flex-shrink:0;transition:all .3s;}
+.fc.open .fi{background:var(--blue);border-color:var(--blue);color:#fff;transform:rotate(45deg);}
+.fb-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease);}
 .fi-body{padding:0 22px 22px 54px;}
 @media(max-width:680px){.fi-body{padding:0 16px 20px;}}
 .steps{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:16px;}
 .step{display:flex;gap:12px;align-items:flex-start;}
-.sn{width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:2px;background:var(–blue-dim);border:1px solid rgba(58,127,255,.3);display:flex;align-items:center;justify-content:center;font-family:‘Syne’,sans-serif;font-size:.6rem;font-weight:800;color:var(–blue);}
-.st{font-size:.84rem;color:var(–muted);line-height:1.65;}
-.st strong{color:var(–white);font-weight:600;}
-.st em{color:var(–blue);font-style:normal;}
-
-/* PROMPT */
+.sn{width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:2px;background:var(--blue-dim);border:1px solid rgba(58,127,255,.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',-apple-system,sans-serif;font-size:.6rem;font-weight:800;color:var(--blue);}
+.st{font-size:.84rem;color:var(--muted);line-height:1.65;}
+.st strong{color:var(--white);font-weight:600;}
+.st em{color:var(--blue);font-style:normal;}
 .pw{background:rgba(4,8,16,.6);border:1px solid rgba(58,127,255,.18);border-radius:12px;padding:18px 18px 14px;margin:12px 0;position:relative;}
-.pl{font-family:‘Syne’,sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(–blue);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.pl{font-family:'Syne',-apple-system,sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
 .pt{font-size:.8rem;color:#8ab4f8;line-height:1.75;font-style:italic;font-weight:300;padding-right:60px;}
-.pc{position:absolute;top:14px;right:14px;background:rgba(58,127,255,.12);border:1px solid rgba(58,127,255,.22);border-radius:7px;padding:5px 11px;font-family:‘Syne’,sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–blue);cursor:none;transition:all .25s;}
+.pc{position:absolute;top:14px;right:14px;background:rgba(58,127,255,.12);border:1px solid rgba(58,127,255,.22);border-radius:7px;padding:5px 11px;font-family:'Syne',-apple-system,sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);cursor:none;transition:all .25s;}
 .pc:hover{background:rgba(58,127,255,.25);}
-.pc.ok{background:rgba(36,216,184,.12);border-color:rgba(36,216,184,.25);color:var(–teal);}
-
-/* QUICK REF */
+.pc.ok{background:rgba(36,216,184,.12);border-color:rgba(36,216,184,.25);color:var(--teal);}
 .qr-list{display:flex;flex-direction:column;gap:10px;margin-top:32px;}
-.qr{display:grid;grid-template-columns:160px 1fr auto;align-items:center;gap:0;background:var(–surface);border:1px solid var(–border);border-radius:var(–radius-sm);overflow:hidden;transition:border-color .3s,transform .3s var(–ease);}
-.qr:hover{border-color:var(–border-hi);transform:translateX(4px);}
-.qr-t{padding:15px 18px;border-right:1px solid var(–border);font-family:‘Syne’,sans-serif;font-size:.78rem;font-weight:700;color:var(–white);background:var(–raised);}
-.qr-d{padding:13px 18px;font-size:.78rem;color:var(–muted);line-height:1.5;}
-.qr-l{padding:13px 18px;border-left:1px solid var(–border);font-family:‘Syne’,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–blue);text-decoration:none;white-space:nowrap;transition:background .25s;cursor:none;}
-.qr-l:hover{background:var(–blue-dim);}
-@media(max-width:600px){.qr{grid-template-columns:1fr;}.qr-t{border-right:none;border-bottom:1px solid var(–border);}.qr-l{border-left:none;border-top:1px solid var(–border);}}
-
-/* CHECKLIST */
+.qr{display:grid;grid-template-columns:160px 1fr auto;align-items:center;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .3s,transform .3s var(--ease);}
+.qr:hover{border-color:var(--border-hi);transform:translateX(4px);}
+.qr-t{padding:15px 18px;border-right:1px solid var(--border);font-family:'Syne',-apple-system,sans-serif;font-size:.78rem;font-weight:700;color:var(--white);background:var(--raised);}
+.qr-d{padding:13px 18px;font-size:.78rem;color:var(--muted);line-height:1.5;}
+.qr-l{padding:13px 18px;border-left:1px solid var(--border);font-family:'Syne',-apple-system,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;white-space:nowrap;transition:background .25s;cursor:none;}
+.qr-l:hover{background:var(--blue-dim);}
+@media(max-width:600px){.qr{grid-template-columns:1fr;}.qr-t{border-right:none;border-bottom:1px solid var(--border);}.qr-l{border-left:none;border-top:1px solid var(--border);}}
 .cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px;}
 @media(max-width:640px){.cl-grid{grid-template-columns:1fr;}}
-.ci{display:flex;align-items:center;gap:12px;background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:14px 18px;cursor:none;transition:all .25s;user-select:none;}
-.ci:hover{border-color:var(–border-hi);}
+.ci{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;cursor:none;transition:all .25s;user-select:none;}
+.ci:hover{border-color:var(--border-hi);}
 .ci.done{border-color:rgba(36,216,184,.28);background:rgba(36,216,184,.04);}
-.ci-box{width:20px;height:20px;border-radius:5px;border:1.5px solid var(–border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;color:transparent;}
-.ci.done .ci-box{border-color:var(–teal);background:rgba(36,216,184,.18);color:var(–teal);}
-.ci-t{font-size:.82rem;color:var(–muted);line-height:1.4;}
+.ci-box{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;color:transparent;}
+.ci.done .ci-box{border-color:var(--teal);background:rgba(36,216,184,.18);color:var(--teal);}
+.ci-t{font-size:.82rem;color:var(--muted);line-height:1.4;}
 .ci.done .ci-t{color:rgba(36,216,184,.7);text-decoration:line-through;}
-.prog{margin-top:20px;background:var(–surface);border:1px solid var(–border);border-radius:var(–radius-sm);padding:18px 22px;}
+.prog{margin-top:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 22px;}
 .prog-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-.prog-l{font-family:‘Syne’,sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(–muted);}
-.prog-n{font-family:‘Syne’,sans-serif;font-size:.8rem;font-weight:800;color:var(–teal);}
+.prog-l{font-family:'Syne',-apple-system,sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.prog-n{font-family:'Syne',-apple-system,sans-serif;font-size:.8rem;font-weight:800;color:var(--teal);}
 .prog-track{height:4px;background:rgba(255,255,255,.05);border-radius:99px;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(–blue),var(–teal));border-radius:99px;transition:width .5s var(–ease);width:0%;}
-
-/* DIV */
-.div{height:1px;background:linear-gradient(90deg,transparent,var(–border),transparent);max-width:1080px;margin:0 auto;}
-
-/* FOOTER */
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:99px;transition:width .5s var(--ease);width:0%;}
+.div{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:1080px;margin:0 auto;}
 #footer{text-align:center;padding:clamp(80px,10vw,140px) 0;position:relative;}
 .footer-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse at bottom,rgba(58,127,255,.16),transparent 70%);pointer-events:none;}
 .footer-in{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 24px;}
-.footer-tag{display:inline-flex;align-items:center;gap:8px;background:var(–blue-dim);border:1px solid rgba(58,127,255,.22);border-radius:99px;padding:8px 20px;margin-bottom:28px;font-family:‘Syne’,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(–blue);}
-.footer-sig{margin-top:52px;padding-top:28px;border-top:1px solid var(–border);font-family:‘Syne’,sans-serif;font-size:1rem;font-weight:700;color:var(–muted);letter-spacing:.05em;}
-.footer-sig span{color:var(–blue);}
-
-/* TOAST */
-#toast{position:fixed;bottom:28px;right:28px;z-index:900;background:rgba(36,216,184,.12);border:1px solid rgba(36,216,184,.3);border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:8px;font-family:‘Syne’,sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–teal);transform:translateY(80px);opacity:0;transition:all .4s var(–ease);}
+.footer-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue-dim);border:1px solid rgba(58,127,255,.22);border-radius:99px;padding:8px 20px;margin-bottom:28px;font-family:'Syne',-apple-system,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);}
+.footer-sig{margin-top:52px;padding-top:28px;border-top:1px solid var(--border);font-family:'Syne',-apple-system,sans-serif;font-size:1rem;font-weight:700;color:var(--muted);letter-spacing:.05em;}
+.footer-sig span{color:var(--blue);}
+#toast{position:fixed;bottom:28px;right:28px;z-index:900;background:rgba(36,216,184,.12);border:1px solid rgba(36,216,184,.3);border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:8px;font-family:'Syne',-apple-system,sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);transform:translateY(80px);opacity:0;transition:all .4s var(--ease);}
 #toast.show{transform:translateY(0);opacity:1;}
-
 @media(max-width:768px){#nav{display:none;}}
 </style>
-
 </head>
 <body>
 <div id="cur"></div>
@@ -224,16 +155,12 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
 <canvas id="cv"></canvas>
 <div id="toast"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Prompt copiado</div>
 
-<!-- LOADER -->
-
 <div id="ld">
   <div class="ld-mark">BLUE<em>.</em></div>
   <div class="ld-sub">Kit Interno · Rebeca × Dr. Rafael Erthal</div>
   <div class="ld-track"><div class="ld-fill" id="lf"></div></div>
   <div class="ld-msg" id="lm">—</div>
 </div>
-
-<!-- NAV -->
 
 <nav id="nav">
   <a href="#hero" class="on">Início</a>
@@ -244,8 +171,6 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
 </nav>
 
 <main>
-
-<!-- HERO -->
 
 <section id="hero">
   <div class="wrap">
@@ -264,7 +189,7 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
         <div class="meta-pill">Vídeo <span>✓</span></div>
         <div class="meta-pill">Copy <span>✓</span></div>
         <div class="meta-pill">Áudio <span>✓</span></div>
-        <div style="font-family:'Syne',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);background:rgba(36,216,184,.08);border:1px solid rgba(36,216,184,.2);border-radius:99px;padding:6px 14px;text-align:center;">100% Grátis</div>
+        <div style="font-family:'Syne',-apple-system,sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);background:rgba(36,216,184,.08);border:1px solid rgba(36,216,184,.2);border-radius:99px;padding:6px 14px;text-align:center;">100% Grátis</div>
       </div>
     </div>
   </div>
@@ -272,8 +197,6 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
 </section>
 
 <div class="div"></div>
-
-<!-- ARSENAL -->
 
 <section id="arsenal">
   <div class="wrap">
@@ -290,129 +213,27 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
       <button class="fb hoverable" data-f="audio">🎙️ Áudio</button>
     </div>
     <div class="grid" id="grid">
-
-```
-  <div class="card foto rv" data-c="foto">
-    <div class="card-top"><div class="card-icon">📸</div><span class="badge b-free">Grátis</span></div>
-    <h3>Cleanup.pictures</h3>
-    <p>Remove logos, marcas d'água e objetos com inpainting perfeito. Reconstrói pele e textura sem borrar. Sem login, sem limite diário.</p>
-    <a href="https://cleanup.pictures" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card foto rv d1" data-c="foto">
-    <div class="card-top"><div class="card-icon">🖼️</div><span class="badge b-free">Grátis</span></div>
-    <h3>Krea.ai — Enhance</h3>
-    <p>Slider de realismo em tempo real. Você ajusta e a imagem se transforma na frente — de clínica bruta para editorial de luxo instantaneamente.</p>
-    <a href="https://krea.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card foto rv d2" data-c="foto">
-    <div class="card-top"><div class="card-icon">✂️</div><span class="badge b-free">Grátis</span></div>
-    <h3>Remove.bg</h3>
-    <p>Remoção de fundo com 1 clique. Isola a paciente para colocar em fundo de estúdio neutro ou degradê profissional. Grátis com marca d'água pequena.</p>
-    <a href="https://remove.bg" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card foto rv" data-c="foto">
-    <div class="card-top"><div class="card-icon">🔬</div><span class="badge b-free">Grátis</span></div>
-    <h3>Tensor.art — FLUX.1</h3>
-    <p>O modelo FLUX.1 Pro tem a melhor textura de pele da indústria inteira. Fotorrealismo de estúdio de $50k, disponível grátis via Tensor.art.</p>
-    <a href="https://tensor.art" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card foto rv d1" data-c="foto">
-    <div class="card-top"><div class="card-icon">🎨</div><span class="badge b-fm">Freemium</span></div>
-    <h3>Ideogram 2.0</h3>
-    <p>Única IA que gera texto legível dentro de imagens. Artes com frases de impacto em tipografia editorial — padrão de revista médica de luxo.</p>
-    <a href="https://ideogram.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card foto rv d2" data-c="foto">
-    <div class="card-top"><div class="card-icon">✨</div><span class="badge b-fm">Freemium</span></div>
-    <h3>Adobe Firefly</h3>
-    <p>Generative Fill no navegador. Seleciona qualquer área e descreve o que quer — reconstrói com a iluminação e perspectiva originais da foto.</p>
-    <a href="https://firefly.adobe.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card video rv" data-c="video">
-    <div class="card-top"><div class="card-icon">✂️</div><span class="badge b-free">100% Grátis</span></div>
-    <h3>CapCut</h3>
-    <p>Melhor opção gratuita para Reels com IA. Remove silêncios, gera legendas animadas, aplica filtros cinematográficos. iPhone e PC, sem marca d'água.</p>
-    <a href="https://capcut.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card video rv d1" data-c="video">
-    <div class="card-top"><div class="card-icon">🎬</div><span class="badge b-fm">Freemium</span></div>
-    <h3>Kling AI 1.6</h3>
-    <p>Foto → vídeo com física real de pele. A paciente caminha, sorri, se move com naturalidade. Melhor custo-benefício da categoria.</p>
-    <a href="https://klingai.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card video rv d2" data-c="video">
-    <div class="card-top"><div class="card-icon">🌊</div><span class="badge b-fm">Freemium</span></div>
-    <h3>Pika Labs 2.2</h3>
-    <p>Anima partes específicas — só as pernas em slow-motion, só o rosto sorrindo. 150 créditos grátis por mês, renova automaticamente.</p>
-    <a href="https://pika.art" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card video rv" data-c="video">
-    <div class="card-top"><div class="card-icon">📽️</div><span class="badge b-fm">Freemium</span></div>
-    <h3>Captions.ai</h3>
-    <p>Legendas animadas que parecem design manual. Corta silêncios automaticamente. Transforma vídeo bruto em Reel pronto. Nativo no iPhone.</p>
-    <a href="https://captions.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card video rv d1" data-c="video">
-    <div class="card-top"><div class="card-icon">🚀</div><span class="badge b-fm">Freemium</span></div>
-    <h3>Runway Gen-4</h3>
-    <p>Nível cinematográfico real. Entende câmera, profundidade e lighting. 125 créditos grátis — use nos conteúdos mais estratégicos do mês.</p>
-    <a href="https://runwayml.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card video rv d2" data-c="video">
-    <div class="card-top"><div class="card-icon">🔝</div><span class="badge b-fm">Freemium</span></div>
-    <h3>Cutout.pro — Video Enhance</h3>
-    <p>Upscala e afina vídeos existentes para 4K automaticamente. Salva vídeos antigos do Dr. Rafael e transforma em conteúdo premium sem regravar.</p>
-    <a href="https://cutout.pro" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card copy rv" data-c="copy">
-    <div class="card-top"><div class="card-icon">🧠</div><span class="badge b-free">Grátis</span></div>
-    <h3>Claude.ai</h3>
-    <p>Melhor para roteiros médicos com empatia real. Entende tom clínico, escreve copy de alta conversão e nunca cai em clichê de marketing.</p>
-    <a href="https://claude.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card copy rv d1" data-c="copy">
-    <div class="card-top"><div class="card-icon">🔍</div><span class="badge b-free">Grátis</span></div>
-    <h3>Perplexity AI</h3>
-    <p>Pesquisa médica com fontes reais citadas. Busca dados sobre lipedema, estatísticas e estudos que posicionam o Dr. Rafael como autoridade máxima.</p>
-    <a href="https://perplexity.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card audio rv" data-c="audio">
-    <div class="card-top"><div class="card-icon">🎙️</div><span class="badge b-fm">Freemium</span></div>
-    <h3>ElevenLabs</h3>
-    <p>Clona a voz do Dr. Rafael com 30 segundos de áudio. 10.000 caracteres grátis/mês — suficiente para narrar 8 a 10 Reels curtos por mês.</p>
-    <a href="https://elevenlabs.io" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-  <div class="card audio rv d1" data-c="audio">
-    <div class="card-top"><div class="card-icon">✂️</div><span class="badge b-fm">Freemium</span></div>
-    <h3>Descript</h3>
-    <p>Edita áudio e vídeo como um documento de texto. Remove vícios de linguagem, silêncios e erros apagando palavras no transcript. Nível podcast profissional.</p>
-    <a href="https://descript.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-  </div>
-
-</div>
-```
-
+      <div class="card foto rv" data-c="foto"><div class="card-top"><div class="card-icon">📸</div><span class="badge b-free">Grátis</span></div><h3>Cleanup.pictures</h3><p>Remove logos, marcas d'água e objetos com inpainting perfeito. Reconstrói pele e textura sem borrar. Sem login, sem limite diário.</p><a href="https://cleanup.pictures" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card foto rv d1" data-c="foto"><div class="card-top"><div class="card-icon">🖼️</div><span class="badge b-free">Grátis</span></div><h3>Krea.ai — Enhance</h3><p>Slider de realismo em tempo real. Você ajusta e a imagem se transforma na frente — de clínica bruta para editorial de luxo instantaneamente.</p><a href="https://krea.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card foto rv d2" data-c="foto"><div class="card-top"><div class="card-icon">✂️</div><span class="badge b-free">Grátis</span></div><h3>Remove.bg</h3><p>Remoção de fundo com 1 clique. Isola a paciente para colocar em fundo de estúdio neutro ou degradê profissional.</p><a href="https://remove.bg" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card foto rv" data-c="foto"><div class="card-top"><div class="card-icon">🔬</div><span class="badge b-free">Grátis</span></div><h3>Tensor.art — FLUX.1</h3><p>O modelo FLUX.1 Pro tem a melhor textura de pele da indústria inteira. Fotorrealismo de estúdio de $50k, disponível grátis via Tensor.art.</p><a href="https://tensor.art" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card foto rv d1" data-c="foto"><div class="card-top"><div class="card-icon">🎨</div><span class="badge b-fm">Freemium</span></div><h3>Ideogram 2.0</h3><p>Única IA que gera texto legível dentro de imagens. Artes com frases de impacto em tipografia editorial — padrão de revista médica de luxo.</p><a href="https://ideogram.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card foto rv d2" data-c="foto"><div class="card-top"><div class="card-icon">✨</div><span class="badge b-fm">Freemium</span></div><h3>Adobe Firefly</h3><p>Generative Fill no navegador. Seleciona qualquer área e descreve o que quer — reconstrói com a iluminação e perspectiva originais da foto.</p><a href="https://firefly.adobe.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card video rv" data-c="video"><div class="card-top"><div class="card-icon">✂️</div><span class="badge b-free">100% Grátis</span></div><h3>CapCut</h3><p>Melhor opção gratuita para Reels com IA. Remove silêncios, gera legendas animadas, aplica filtros cinematográficos. iPhone e PC, sem marca d'água.</p><a href="https://capcut.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card video rv d1" data-c="video"><div class="card-top"><div class="card-icon">🎬</div><span class="badge b-fm">Freemium</span></div><h3>Kling AI 1.6</h3><p>Foto → vídeo com física real de pele. A paciente caminha, sorri, se move com naturalidade. Melhor custo-benefício da categoria.</p><a href="https://klingai.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card video rv d2" data-c="video"><div class="card-top"><div class="card-icon">🌊</div><span class="badge b-fm">Freemium</span></div><h3>Pika Labs 2.2</h3><p>Anima partes específicas — só as pernas em slow-motion, só o rosto sorrindo. 150 créditos grátis por mês, renova automaticamente.</p><a href="https://pika.art" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card video rv" data-c="video"><div class="card-top"><div class="card-icon">📽️</div><span class="badge b-fm">Freemium</span></div><h3>Captions.ai</h3><p>Legendas animadas que parecem design manual. Corta silêncios automaticamente. Transforma vídeo bruto em Reel pronto. Nativo no iPhone.</p><a href="https://captions.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card video rv d1" data-c="video"><div class="card-top"><div class="card-icon">🚀</div><span class="badge b-fm">Freemium</span></div><h3>Runway Gen-4</h3><p>Nível cinematográfico real. Entende câmera, profundidade e lighting. 125 créditos grátis — use nos conteúdos mais estratégicos do mês.</p><a href="https://runwayml.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card video rv d2" data-c="video"><div class="card-top"><div class="card-icon">🔝</div><span class="badge b-fm">Freemium</span></div><h3>Cutout.pro — Video Enhance</h3><p>Upscala e afina vídeos existentes para 4K automaticamente. Salva vídeos antigos do Dr. Rafael e transforma em conteúdo premium sem regravar.</p><a href="https://cutout.pro" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card copy rv" data-c="copy"><div class="card-top"><div class="card-icon">🧠</div><span class="badge b-free">Grátis</span></div><h3>Claude.ai</h3><p>Melhor para roteiros médicos com empatia real. Entende tom clínico, escreve copy de alta conversão e nunca cai em clichê de marketing.</p><a href="https://claude.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card copy rv d1" data-c="copy"><div class="card-top"><div class="card-icon">🔍</div><span class="badge b-free">Grátis</span></div><h3>Perplexity AI</h3><p>Pesquisa médica com fontes reais citadas. Busca dados sobre lipedema, estatísticas e estudos que posicionam o Dr. Rafael como autoridade máxima.</p><a href="https://perplexity.ai" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card audio rv" data-c="audio"><div class="card-top"><div class="card-icon">🎙️</div><span class="badge b-fm">Freemium</span></div><h3>ElevenLabs</h3><p>Clona a voz do Dr. Rafael com 30 segundos de áudio. 10.000 caracteres grátis/mês — suficiente para narrar 8 a 10 Reels curtos por mês.</p><a href="https://elevenlabs.io" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+      <div class="card audio rv d1" data-c="audio"><div class="card-top"><div class="card-icon">✂️</div><span class="badge b-fm">Freemium</span></div><h3>Descript</h3><p>Edita áudio e vídeo como um documento de texto. Remove vícios de linguagem, silêncios e erros apagando palavras no transcript.</p><a href="https://descript.com" target="_blank" class="cl hoverable">Abrir<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
+    </div>
   </div>
 </section>
 
 <div class="div"></div>
-
-<!-- FLUXOS -->
 
 <section id="fluxos">
   <div class="wrap">
@@ -422,150 +243,17 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
       <p class="lead rv d2" style="margin-top:14px;">Abra o que você precisa agora. Prompts prontos para copiar.</p>
     </div>
     <div class="flow-grid">
-
-```
-  <div class="fc rv">
-    <div class="fh hoverable" onclick="tog(this)">
-      <span class="fn">01</span>
-      <span class="fl">Remover logo sem destruir a foto</span>
-      <div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">01</span><span class="fl">Remover logo sem destruir a foto</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>cleanup.pictures</em> — sem login, sem custo, funciona no iPhone.</div></li><li class="step"><div class="sn">2</div><div class="st"><strong>Upload em máxima resolução.</strong> Quanto maior, melhor a reconstrução.</div></li><li class="step"><div class="sn">3</div><div class="st">Pinte a logo <strong>em pedaços pequenos</strong> — a IA reconstrói textura por camadas.</div></li><li class="step"><div class="sn">4</div><div class="st">Repita 2–3 passadas se restar resíduo. Para pele complexa finalize no <em>Adobe Firefly</em>.</div></li></ol></div></div></div>
+      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">02</span><span class="fl">Foto clínica → editorial de luxo</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Limpe a foto com o Fluxo 01 primeiro.</div></li><li class="step"><div class="sn">2</div><div class="st">Acesse <em>krea.ai → Enhance</em>. Ajuste o slider de "Realism" para <strong>0.65–0.75</strong>.</div></li><li class="step"><div class="sn">3</div><div class="st">Cole o prompt abaixo.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Krea.ai Enhance</div><div class="pt" id="p1">clinical high-end studio photography, ultra-realistic skin texture with visible micro-pores, soft directional side lighting revealing body contour, deep neutral background, luxury medical aesthetic, sharp focus, LipeDefinition style</div><button class="pc hoverable" onclick="cp('p1',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">4</div><div class="st">Para ainda mais realismo: exporte e refine no <em>Tensor.art</em> com FLUX.1 Pro.</div></li></ol></div></div></div>
+      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">03</span><span class="fl">Foto → Reel cinematográfico</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>klingai.com → Image to Video</em>. Carregue a foto do resultado final.</div></li><li class="step"><div class="sn">2</div><div class="st">Modo: <strong>Professional</strong> · Duração: <strong>5s</strong> · Aspecto: <strong>9:16</strong>.</div></li><li class="step"><div class="sn">3</div><div class="st">Use o prompt abaixo.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Kling AI</div><div class="pt" id="p2">smooth vertical cinematic reveal of defined legs, slow upward pan, soft golden studio light, freedom and recovery atmosphere, luxury medical aesthetic, documentary-style camera movement, no distortion, skin texture preserved</div><button class="pc hoverable" onclick="cp('p2',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">4</div><div class="st">Importe no <em>CapCut</em> → legendas → trilha → exporta 1080p.</div></li></ol></div></div></div>
+      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">04</span><span class="fl">Roteiro de Reel que converte</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Abra <em>claude.ai</em>. Cole o prompt mestre abaixo e adicione o tema do vídeo no final.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt Mestre · Claude.ai</div><div class="pt" id="p3">Você é copywriter médico especialista em alta conversão para cirurgiões no Brasil. Crie um roteiro de Reel de 30s para o Dr. Rafael Erthal, especialista em lipedema com técnica LipeDefinition® (formado na Alemanha). Público: mulheres 30-55 com lipedema, sofrendo com dor, inchaço e diagnóstico tardio. Tom: empático, autoridade, esperança real. Estrutura: gancho emocional (0-3s) → dado ou prova social (3-10s) → técnica sem jargão (10-22s) → CTA direto (22-30s). Sem clichês. Foco na transformação funcional: voltar a caminhar sem dor, dormir sem inchaço. Tema do vídeo:</div><button class="pc hoverable" onclick="cp('p3',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">2</div><div class="st">Complete o tema no final. O Claude devolve o roteiro formatado com tempo de cada fala.</div></li></ol></div></div></div>
+      <div class="fc rv"><div class="fh hoverable" onclick="tog(this)"><span class="fn">05</span><span class="fl">Arte editorial com texto (Ideogram)</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Acesse <em>ideogram.ai</em> → Style: <strong>Design</strong> → Aspect: <strong>9:16</strong>.</div></li><li class="step"><div class="sn">2</div><div class="st">Cole o prompt abaixo trocando a frase pelo texto que você quer na arte.</div></li></ol><div class="pw"><div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Ideogram 2.0</div><div class="pt" id="p4">Dark luxury medical editorial poster, large elegant serif headline text reading "LIPEDEFINITION®", subtitle in small clean sans-serif "A técnica que devolveu liberdade", deep navy blue background with subtle gold accent line, minimalist high-end clinic aesthetic, no clutter, 9:16 vertical, professional typography layout</div><button class="pc hoverable" onclick="cp('p4',this)">Copiar</button></div><ol class="steps" style="margin-top:12px;"><li class="step"><div class="sn">3</div><div class="st">Gere 4 variações, escolha a melhor. Ajuste textos no <em>Canva</em> sem precisar regen.</div></li></ol></div></div></div>
+      <div class="fc rv d1"><div class="fh hoverable" onclick="tog(this)"><span class="fn">06</span><span class="fl">Clonar voz do Dr. Rafael</span><div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="fb-body"><div class="fi-body"><ol class="steps"><li class="step"><div class="sn">1</div><div class="st">Grave o Dr. Rafael por <strong>30–60 segundos</strong> em ambiente silencioso.</div></li><li class="step"><div class="sn">2</div><div class="st">Acesse <em>elevenlabs.io → Voice Lab → Add Voice → Instant Voice Clone</em>. Faça upload.</div></li><li class="step"><div class="sn">3</div><div class="st">Cole o roteiro do Fluxo 04. A IA gera narração com a voz dele em segundos.</div></li><li class="step"><div class="sn">4</div><div class="st">Plano grátis: <strong>10.000 caracteres/mês</strong> ≈ 10 Reels. Use nos conteúdos mais estratégicos.</div></li></ol></div></div></div>
     </div>
-    <div class="fb-body">
-      <div class="fi-body">
-        <ol class="steps">
-          <li class="step"><div class="sn">1</div><div class="st">Acesse <em>cleanup.pictures</em> — sem login, sem custo, funciona no iPhone.</div></li>
-          <li class="step"><div class="sn">2</div><div class="st"><strong>Upload em máxima resolução.</strong> Quanto maior, melhor a reconstrução da IA.</div></li>
-          <li class="step"><div class="sn">3</div><div class="st">Pinte a logo <strong>em pedaços pequenos</strong> — nunca tudo de uma vez. A IA reconstrói textura por camadas.</div></li>
-          <li class="step"><div class="sn">4</div><div class="st">Repita 2–3 passadas se restar resíduo. Para pele complexa (coxas, abdômen), finalize no <em>Adobe Firefly Generative Fill</em>.</div></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <div class="fc rv d1">
-    <div class="fh hoverable" onclick="tog(this)">
-      <span class="fn">02</span>
-      <span class="fl">Foto clínica → editorial de luxo</span>
-      <div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    </div>
-    <div class="fb-body">
-      <div class="fi-body">
-        <ol class="steps">
-          <li class="step"><div class="sn">1</div><div class="st">Limpe a foto com o Fluxo 01 primeiro.</div></li>
-          <li class="step"><div class="sn">2</div><div class="st">Acesse <em>krea.ai → Enhance</em>. Faça upload. Ajuste o slider de "Realism" para <strong>0.65–0.75</strong>.</div></li>
-          <li class="step"><div class="sn">3</div><div class="st">Cole o prompt abaixo no campo de texto para guiar a iluminação.</div></li>
-        </ol>
-        <div class="pw">
-          <div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Krea.ai Enhance</div>
-          <div class="pt" id="p1">clinical high-end studio photography, ultra-realistic skin texture with visible micro-pores, soft directional side lighting revealing body contour, deep neutral background, luxury medical aesthetic, sharp focus, LipeDefinition style</div>
-          <button class="pc hoverable" onclick="cp('p1',this)">Copiar</button>
-        </div>
-        <ol class="steps" style="counter-reset:sc 3;margin-top:12px;">
-          <li class="step"><div class="sn">4</div><div class="st">Para ainda mais realismo: exporte e refine no <em>Tensor.art</em> com o modelo FLUX.1 Pro.</div></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <div class="fc rv">
-    <div class="fh hoverable" onclick="tog(this)">
-      <span class="fn">03</span>
-      <span class="fl">Foto → Reel cinematográfico</span>
-      <div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    </div>
-    <div class="fb-body">
-      <div class="fi-body">
-        <ol class="steps">
-          <li class="step"><div class="sn">1</div><div class="st">Acesse <em>klingai.com → Image to Video</em>. Carregue a foto do resultado final.</div></li>
-          <li class="step"><div class="sn">2</div><div class="st">Modo: <strong>Professional</strong> · Duração: <strong>5s</strong> · Aspecto: <strong>9:16</strong>.</div></li>
-          <li class="step"><div class="sn">3</div><div class="st">Use o prompt abaixo para definir o movimento.</div></li>
-        </ol>
-        <div class="pw">
-          <div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Kling AI</div>
-          <div class="pt" id="p2">smooth vertical cinematic reveal of defined legs, slow upward pan, soft golden studio light, freedom and recovery atmosphere, luxury medical aesthetic, documentary-style camera movement, no distortion, skin texture preserved</div>
-          <button class="pc hoverable" onclick="cp('p2',this)">Copiar</button>
-        </div>
-        <ol class="steps" style="counter-reset:sc 3;margin-top:12px;">
-          <li class="step"><div class="sn">4</div><div class="st">Importe no <em>CapCut</em> → legendas animadas → trilha → exporta 1080p.</div></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <div class="fc rv d1">
-    <div class="fh hoverable" onclick="tog(this)">
-      <span class="fn">04</span>
-      <span class="fl">Roteiro de Reel que converte</span>
-      <div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    </div>
-    <div class="fb-body">
-      <div class="fi-body">
-        <ol class="steps">
-          <li class="step"><div class="sn">1</div><div class="st">Abra <em>claude.ai</em>. Cole o prompt mestre abaixo e adicione o tema do vídeo no final.</div></li>
-        </ol>
-        <div class="pw">
-          <div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt Mestre · Claude.ai</div>
-          <div class="pt" id="p3">Você é copywriter médico especialista em alta conversão para cirurgiões no Brasil. Crie um roteiro de Reel de 30s para o Dr. Rafael Erthal, especialista em lipedema com técnica LipeDefinition® (formado na Alemanha). Público: mulheres 30-55 com lipedema, sofrendo com dor, inchaço e diagnóstico tardio. Tom: empático, autoridade, esperança real. Estrutura: gancho emocional (0-3s) → dado ou prova social (3-10s) → técnica sem jargão (10-22s) → CTA direto (22-30s). Sem clichês. Foco na transformação funcional: voltar a caminhar sem dor, dormir sem inchaço. Tema do vídeo:</div>
-          <button class="pc hoverable" onclick="cp('p3',this)">Copiar</button>
-        </div>
-        <ol class="steps" style="counter-reset:sc 1;margin-top:12px;">
-          <li class="step"><div class="sn">2</div><div class="st">Complete o tema no final. O Claude devolve o roteiro formatado com tempo de cada fala.</div></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <div class="fc rv">
-    <div class="fh hoverable" onclick="tog(this)">
-      <span class="fn">05</span>
-      <span class="fl">Arte editorial com texto (Ideogram)</span>
-      <div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    </div>
-    <div class="fb-body">
-      <div class="fi-body">
-        <ol class="steps">
-          <li class="step"><div class="sn">1</div><div class="st">Acesse <em>ideogram.ai</em> → Style: <strong>Design</strong> → Aspect: <strong>9:16</strong>.</div></li>
-          <li class="step"><div class="sn">2</div><div class="st">Cole o prompt abaixo trocando a frase pelo texto que você quer na arte.</div></li>
-        </ol>
-        <div class="pw">
-          <div class="pl"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Prompt · Ideogram 2.0</div>
-          <div class="pt" id="p4">Dark luxury medical editorial poster, large elegant serif headline text reading "LIPEDEF INITION®", subtitle in small clean sans-serif "A técnica que devolveu liberdade", deep navy blue background with subtle gold accent line, minimalist high-end clinic aesthetic, no clutter, 9:16 vertical, professional typography layout</div>
-          <button class="pc hoverable" onclick="cp('p4',this)">Copiar</button>
-        </div>
-        <ol class="steps" style="counter-reset:sc 2;margin-top:12px;">
-          <li class="step"><div class="sn">3</div><div class="st">Gere 4 variações, escolha a melhor. Ajuste textos no <em>Canva</em> sem precisar regen.</div></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <div class="fc rv d1">
-    <div class="fh hoverable" onclick="tog(this)">
-      <span class="fn">06</span>
-      <span class="fl">Clonar voz do Dr. Rafael</span>
-      <div class="fi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    </div>
-    <div class="fb-body">
-      <div class="fi-body">
-        <ol class="steps">
-          <li class="step"><div class="sn">1</div><div class="st">Grave o Dr. Rafael por <strong>30–60 segundos</strong> em ambiente silencioso. iPhone está ótimo.</div></li>
-          <li class="step"><div class="sn">2</div><div class="st">Acesse <em>elevenlabs.io → Voice Lab → Add Voice → Instant Voice Clone</em>. Faça upload.</div></li>
-          <li class="step"><div class="sn">3</div><div class="st">Cole o roteiro do Fluxo 04. A IA gera narração com a voz dele em segundos.</div></li>
-          <li class="step"><div class="sn">4</div><div class="st">Plano grátis: <strong>10.000 caracteres/mês</strong> ≈ 10 Reels. Use nos conteúdos mais estratégicos.</div></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-</div>
-```
-
   </div>
 </section>
 
 <div class="div"></div>
-
-<!-- REFERÊNCIA RÁPIDA -->
 
 <section id="ref">
   <div class="wrap">
@@ -590,8 +278,6 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
 
 <div class="div"></div>
 
-<!-- CHECKLIST -->
-
 <section id="checklist">
   <div class="wrap">
     <div style="margin-bottom:clamp(28px,4vw,44px);">
@@ -599,10 +285,7 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
       <h2 class="rv d1">Antes de<br><span class="g">publicar.</span></h2>
       <p class="lead rv d2" style="margin-top:14px;">Régua interna. Marque o que está ok.</p>
     </div>
-    <div class="prog rv d3">
-      <div class="prog-h"><span class="prog-l">Concluído</span><span class="prog-n" id="pn">0 / 10</span></div>
-      <div class="prog-track"><div class="prog-fill" id="pf"></div></div>
-    </div>
+    <div class="prog rv d3"><div class="prog-h"><span class="prog-l">Concluído</span><span class="prog-n" id="pn">0 / 10</span></div><div class="prog-track"><div class="prog-fill" id="pf"></div></div></div>
     <div class="cl-grid">
       <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Logo removida sem rastros (Cleanup.pictures)</span></div>
       <div class="ci hoverable" onclick="ck(this)"><div class="ci-box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="ci-t">Imagem em alta resolução (mín. 1080px)</span></div>
@@ -620,8 +303,6 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
 
 <div class="div"></div>
 
-<!-- FOOTER -->
-
 <section id="footer">
   <div class="footer-glow"></div>
   <div class="footer-in">
@@ -633,62 +314,68 @@ p.lead{font-size:1.1rem;color:var(–muted);line-height:1.8;max-width:560px;}
 </section>
 
 </main>
+
 <script>
 // CURSOR
 const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY;cur.style.left=(mx-4)+'px';cur.style.top=(my-4)+'px'; });
-setInterval(()=>{ rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=(rx-16)+'px';curR.style.top=(ry-16)+'px'; },10);
-document.querySelectorAll('.hoverable,button,a,[onclick]').forEach(el=>{ el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h')); });
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-4)+'px';cur.style.top=(my-4)+'px';});
+setInterval(()=>{rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=(rx-16)+'px';curR.style.top=(ry-16)+'px';},10);
+document.querySelectorAll('.hoverable,button,a,[onclick]').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});
 
 // CANVAS
-const cv=document.getElementById(‘cv’),cx=cv.getContext(‘2d’);
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');
 let W,H,pts=[];
-function rsz(){ W=cv.width=innerWidth;H=cv.height=innerHeight; }
-addEventListener(‘resize’,rsz);rsz();
-class P{ constructor(){ this.r(); } r(){ this.x=Math.random()*W;this.y=Math.random()*H;this.r2=Math.random()*1+.2;this.vx=(Math.random()-.5)*.12;this.vy=(Math.random()-.5)*.12;this.a=Math.random()*.4+.08;this.c=Math.random()<.15?’#24d8b8’:’#3a7fff’; } t(){ this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.r(); } d(){ cx.beginPath();cx.arc(this.x,this.y,this.r2,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill(); } }
-for(let i=0;i<100;i++) pts.push(new P());
+function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+addEventListener('resize',rsz);rsz();
+class P{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1+.2;this.vx=(Math.random()-.5)*.12;this.vy=(Math.random()-.5)*.12;this.a=Math.random()*.4+.08;this.c=Math.random()<.15?'#24d8b8':'#3a7fff';}tick(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();}}
+for(let i=0;i<100;i++)pts.push(new P());
 function loop(){
-cx.clearRect(0,0,W,H);
-[[W*.15,H*.2,260,‘rgba(58,127,255,.03)’],[W*.85,H*.5,300,‘rgba(58,127,255,.02)’],[W*.5,H*.85,220,‘rgba(36,216,184,.025)’]].forEach(([x,y,r,c])=>{ const g=cx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c);g.addColorStop(1,‘transparent’);cx.globalAlpha=1;cx.fillStyle=g;cx.beginPath();cx.arc(x,y,r,0,Math.PI*2);cx.fill(); });
-for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){ const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<80){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle=’#3a7fff’;cx.globalAlpha=(1-d/80)*.05;cx.lineWidth=.5;cx.stroke();} }
-pts.forEach(p=>{p.t();p.d();});cx.globalAlpha=1;requestAnimationFrame(loop);
+  cx.clearRect(0,0,W,H);
+  [[W*.15,H*.2,260,'rgba(58,127,255,.03)'],[W*.85,H*.5,300,'rgba(58,127,255,.02)'],[W*.5,H*.85,220,'rgba(36,216,184,.025)']].forEach(([x,y,r,c])=>{const g=cx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c);g.addColorStop(1,'transparent');cx.globalAlpha=1;cx.fillStyle=g;cx.beginPath();cx.arc(x,y,r,0,Math.PI*2);cx.fill();});
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<80){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle='#3a7fff';cx.globalAlpha=(1-d/80)*.05;cx.lineWidth=.5;cx.stroke();}}
+  pts.forEach(p=>{p.tick();p.draw();});cx.globalAlpha=1;requestAnimationFrame(loop);
 }
 loop();
 
 // LOADER
-const lf=document.getElementById(‘lf’),lm=document.getElementById(‘lm’),ld=document.getElementById(‘ld’),nav=document.getElementById(‘nav’);
-const seq=[[0,’—’],[12,‘Conectando…’],[28,‘Carregando ferramentas…’],[50,‘Compilando fluxos…’],[72,‘LipeDefinition® ready’],[90,‘Verificando…’],[100,‘✓’]];
-let si=0;
-(function run(){ if(si>=seq.length){ setTimeout(()=>{ ld.classList.add(‘out’);nav.classList.add(‘vis’);revAll(); },500);return; } const[p,t]=seq[si++];lf.style.width=p+’%’;lm.textContent=t;setTimeout(run,si===seq.length?300:280); })();
+const ld=document.getElementById('ld'),nav=document.getElementById('nav'),lf=document.getElementById('lf'),lm=document.getElementById('lm');
+const msgs=['Carregando ferramentas...','Compilando fluxos...','LipeDefinition® ready','✓'];
+let prog=0,mi=0;
+const iv=setInterval(()=>{
+  prog+=Math.random()*18+8;
+  if(prog>=100){prog=100;lf.style.width='100%';lm.textContent='✓';clearInterval(iv);setTimeout(()=>{ld.classList.add('out');nav.classList.add('vis');revAll();},500);return;}
+  lf.style.width=prog+'%';
+  lm.textContent=msgs[Math.min(mi++,msgs.length-1)];
+},230);
 
 // SCROLL
-const sp=document.getElementById(‘sp’);
-addEventListener(‘scroll’,()=>{ sp.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+’%’;updNav(); });
-function updNav(){ const ids=[‘hero’,‘arsenal’,‘fluxos’,‘ref’,‘checklist’];let a=‘hero’;ids.forEach(id=>{const e=document.getElementById(id);if(e&&scrollY>=e.offsetTop-160)a=id;});document.querySelectorAll(’#nav a’).forEach(x=>x.classList.toggle(‘on’,x.getAttribute(‘href’)===’#’+a)); }
+const sp=document.getElementById('sp');
+addEventListener('scroll',()=>{sp.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';updNav();});
+function updNav(){const ids=['hero','arsenal','fluxos','ref','checklist'];let a='hero';ids.forEach(id=>{const e=document.getElementById(id);if(e&&scrollY>=e.offsetTop-160)a=id;});document.querySelectorAll('#nav a').forEach(x=>x.classList.toggle('on',x.getAttribute('href')==='#'+a));}
 
 // REVEAL
-const rvEls=document.querySelectorAll(’.rv’);
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add(‘in’);}),{threshold:.07,rootMargin:‘0px 0px -30px 0px’});
-function revAll(){ rvEls.forEach(el=>obs.observe(el)); }
+const rvEls=document.querySelectorAll('.rv');
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+function revAll(){rvEls.forEach(el=>obs.observe(el));}
 
 // TILT
-document.querySelectorAll(’.card,.fc,.qr’).forEach(el=>{
-el.addEventListener(‘mousemove’,e=>{ const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`translateY(-4px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;el.style.transformStyle=‘preserve-3d’; });
-el.addEventListener(‘mouseleave’,()=>{ el.style.transform=’’; });
+document.querySelectorAll('.card,.qr').forEach(el=>{
+  el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`translateY(-4px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;el.style.transformStyle='preserve-3d';});
+  el.addEventListener('mouseleave',()=>{el.style.transform='';});
 });
 
 // ACCORDION
-function tog(head){ const item=head.parentElement,body=item.querySelector(’.fb-body’),open=item.classList.contains(‘open’);document.querySelectorAll(’.fc’).forEach(fc=>{fc.classList.remove(‘open’);fc.querySelector(’.fb-body’).style.maxHeight=null;});if(!open){item.classList.add(‘open’);body.style.maxHeight=body.scrollHeight+‘px’;} }
+function tog(head){const item=head.parentElement,body=item.querySelector('.fb-body'),open=item.classList.contains('open');document.querySelectorAll('.fc').forEach(fc=>{fc.classList.remove('open');fc.querySelector('.fb-body').style.maxHeight=null;});if(!open){item.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}}
 
 // FILTER
-document.querySelectorAll(’.fb’).forEach(btn=>{ btn.addEventListener(‘click’,()=>{ document.querySelectorAll(’.fb’).forEach(b=>b.classList.remove(‘on’));btn.classList.add(‘on’);const f=btn.dataset.f;document.querySelectorAll(’#grid .card’).forEach((c,i)=>{ const show=f===‘all’||c.dataset.c===f;c.classList.toggle(‘hidden’,!show);if(show){c.style.opacity=‘0’;c.style.transform=‘translateY(14px)’;setTimeout(()=>{c.style.transition=‘opacity .3s,transform .3s’;c.style.opacity=‘1’;c.style.transform=’’;},i*25);} }); }); });
+document.querySelectorAll('.filter-row .fb').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-row .fb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');const f=btn.dataset.f;document.querySelectorAll('#grid .card').forEach((c,i)=>{const show=f==='all'||c.dataset.c===f;c.classList.toggle('hidden',!show);if(show){c.style.opacity='0';c.style.transform='translateY(14px)';setTimeout(()=>{c.style.transition='opacity .3s,transform .3s';c.style.opacity='1';c.style.transform='';},i*25);}});});});
 
 // COPY
-function cp(id,btn){ navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{ btn.textContent=‘✓ Ok’;btn.classList.add(‘ok’);const t=document.getElementById(‘toast’);t.classList.add(‘show’);setTimeout(()=>{btn.textContent=‘Copiar’;btn.classList.remove(‘ok’);t.classList.remove(‘show’);},2200); }); }
+function cp(id,btn){navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{btn.textContent='✓ Ok';btn.classList.add('ok');const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>{btn.textContent='Copiar';btn.classList.remove('ok');t.classList.remove('show');},2200);});}
 
 // CHECKLIST
-function ck(el){ el.classList.toggle(‘done’);const all=document.querySelectorAll(’.ci’).length,done=document.querySelectorAll(’.ci.done’).length;document.getElementById(‘pn’).textContent=done+’ / ‘+all;document.getElementById(‘pf’).style.width=(done/all*100)+’%’; }
+function ck(el){el.classList.toggle('done');const all=document.querySelectorAll('.ci').length,done=document.querySelectorAll('.ci.done').length;document.getElementById('pn').textContent=done+' / '+all;document.getElementById('pf').style.width=(done/all*100)+'%';}
 </script>
 
 </body>
